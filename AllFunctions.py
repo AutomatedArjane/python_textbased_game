@@ -1,5 +1,9 @@
 # all variables, functions and classes needed for the story
 
+##########################################################################
+#                            CHARACTER CLASS                             #
+##########################################################################
+
 # create a character with a name and gender. It keeps track of the amount of gold and experience you have, and the mission day 
 class Character:
 
@@ -19,6 +23,10 @@ class Character:
         if self.char_status["xp"] % 8 == 0: # check if level-up is needed
             self.char_status["level"] = round(self.char_status["xp"] / 8) # level up with the correct amount of levels
 
+##########################################################################
+#                           CHARACTER CREATION                           #
+##########################################################################
+
 # create a character using the class "Character"
 def create_character():
 
@@ -37,12 +45,6 @@ def create_character():
     mycharacter = Character(name, gender, char_status)
     return mycharacter
 
-# -----------------------------------------------------------------------------------------------------------------------
-
-mycharacter = create_character() # this goes to the main file
-print(mycharacter) # this goes to the main file
-mycharacter.gain_xp(40)
-print(mycharacter)
-
-# -----------------------------------------------------------------------------------------------------------------------
-
+##########################################################################
+#                           NEXT FUNCTION                                #
+##########################################################################
