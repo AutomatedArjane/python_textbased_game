@@ -8,15 +8,22 @@ from goal_class import *
 
 class Goal:
     
-    def __init__(self, goal_name: str, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int, gold_goal: int):
+    def __init__(self, goal_name: str, no_of_quest_days: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int, gold_goal: int):
+        self.no_of_quest_days = no_of_quest_days
         self.goal_name = goal_name
         self.animal_xp_goal = animal_xp_goal
         self.dex_xp_goal = dex_xp_goal
         self.entertainment_xp_goal = entertainment_xp_goal
         self.gold_goal = gold_goal
 
+    def __str__(self): # fill this in!!!
+        pass
+
     def get_goal_name(self):
         return self.goal_name
+
+    def get_no_of_quest_days(self):
+        return self.no_of_quest_days
     
     def get_animal_xp_goal(self):
         return self.get_animal_xp_goal

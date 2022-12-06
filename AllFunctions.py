@@ -19,12 +19,17 @@ def create_character():
             print("Please pick one of the available options.")
         else:
             break
-        
-    char_status = {"Day": 0, "Gold": 0, "Animal xp": 0, "Dex xp": 0, "Entertainment xp": 0, "Level": 0} # create the statistics of the character
 
+    # create the statistics of the character     
+    Quest_day = 0
+    Gold = 0
+    Animal_xp = 0
+    Dex_xp = 0
+    Entertainment_xp = 0
+    Level = 0
     
     # create a character "mycharacter"
-    mycharacter = Character(name, gender, char_status)
+    mycharacter = Character(name, gender, Quest_day, Gold, Animal_xp, Dex_xp, Entertainment_xp, Level)
     return mycharacter
 
 ##########################################################################
@@ -43,14 +48,12 @@ def create_goal():
     return mygoal
 
 
-def game_won(mycharacter: Character): # I coded this very fast, check that it works!
-    print(f"Congrats, you achieved your goal: buy horse")
-    you_won_status = mycharacter.get_char_status()
+def game_won(mycharacter: Character, mygoal: Goal): # I coded this very fast, check that it works!
+    print(f"Congratulations, you achieved your goal: {mygoal.goal_name}.\n\nYou won on day {mycharacter.get_quest_day} of {mygoal.get_no_of_quest_days}. You collected:\n- {mycharacter.get_gold} of {mygoal.get_gold} gold\n- {mycharacter.get_animal_xp} of {mygoal.get_animal_xp} gold\n- {mycharacter.get_dex_xp} of {mygoal.get_dex_xp} gold\n- {mycharacter.get_entertainment_xp} of {mygoal.get_entertainment_xp} gold\n You have achieved level {mycharacter.get_level}")
 
-    for key, value in you_won_status.items():
-        print(get_animal_xp_goal) # fix this
-        print(key, ":", value)
 
-def game_lost(self, char_status: Character): # I coded this very fast, check that it works!
+def game_lost(mycharacter: Character, mygoal: Goal): # I coded this very fast, check that it works!
     print(f"Unfortunately you didn't manage to achieve your goal: buy horse") # continue coding this
+
+    print(f"It is now the last day of your quest, day {mygoal.get_no_of_quest_days}. Unfortunately you haven't managed to achieve your goal: {mygoal.goal_name}.\n\nYou collected:\n- {mycharacter.get_gold} of {mygoal.get_gold} gold\n- {mycharacter.get_animal_xp} of {mygoal.get_animal_xp} gold\n- {mycharacter.get_dex_xp} of {mygoal.get_dex_xp} gold\n- {mycharacter.get_entertainment_xp} of {mygoal.get_entertainment_xp} gold\n You have achieved level {mycharacter.get_level}")
 
