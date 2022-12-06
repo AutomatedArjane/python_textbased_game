@@ -33,13 +33,13 @@ def create_character():
 
 # create a character using the class "Goal"
 def create_goal():
-
+    # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
     goal_name = input('You can choose from three different goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of xp and gold you need to collect.\nType the name of the goal you want to choose here: ') # ask the user for their preferred goal
     
-    Goal.goal_values(goal_name, animal_xp_goal, dex_xp_goal, entertainment_xp_goal, gold_goal)
+    Goal.goal_values(goal_name) # this doesn't work, find out why
 
     # create a goal "mygoal"
-    mygoal = Goal(goal_name, animal_xp_goal, dex_xp_goal, entertainment_xp_goal, gold_goal)
+    mygoal = Goal(goal_name, animal_xp_goal, dex_xp_goal, entertainment_xp_goal, gold_goal) # check why there's wriggly lines here
     return mygoal
 
 
@@ -48,9 +48,9 @@ def game_won(mycharacter: Character): # I coded this very fast, check that it wo
     you_won_status = mycharacter.get_char_status()
 
     for key, value in you_won_status.items():
-        print(get_animal_xp_goal)
+        print(get_animal_xp_goal) # fix this
         print(key, ":", value)
 
 def game_lost(self, char_status: Character): # I coded this very fast, check that it works!
-    print(f"Unfortunately you didn't manage to achieve your goal: buy horse")
+    print(f"Unfortunately you didn't manage to achieve your goal: buy horse") # continue coding this
 

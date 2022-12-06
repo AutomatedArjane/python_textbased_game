@@ -32,14 +32,14 @@ class Character:
     def gain_animal_xp(self, animal_xp_increase: int):
         self.char_status["Animal xp"] += animal_xp_increase
         if self.char_status["Animal xp"] % 8 == 0: # check if level-up is needed # IS THIS STILL RELEVANT?????? <--------------------^^^*******ÄÄÄÄ
-            self.char_status["Level"] = round(self.char_status["Animal xp"] / 8) # level up with the correct amount of levels
+            self.char_status["Level"] = round((self.char_status["Animal xp"] + self.char_status["Dex xp"] + self.char_status["Entertainment xp"]) / 8) # level up with the correct amount of levels
 
     def gain_dex_xp(self, dex_xp_increase: int):
         self.char_status["Dex xp"] += dex_xp_increase
         if self.char_status["Dex xp"] % 8 == 0: # check if level-up is needed
-            self.char_status["Level"] = round(self.char_status["Dex xp"] / 8) # level up with the correct amount of levels
+            self.char_status["Level"] = round((self.char_status["Animal xp"] + self.char_status["Dex xp"] + self.char_status["Entertainment xp"]) / 8) # level up with the correct amount of levels
 
     def gain_entertainment_xp(self, entertainment_xp_increase: int):
         self.char_status["Entertainment xp"] += entertainment_xp_increase
         if self.char_status["Entertainment xp"] % 8 == 0: # check if level-up is needed
-            self.char_status["Level"] = round(self.char_status["Entertainment xp"] / 8) # level up with the correct amount of levels                        
+            self.char_status["Level"] = round((self.char_status["Animal xp"] + self.char_status["Dex xp"] + self.char_status["Entertainment xp"]) / 8) # level up with the correct amount of levels                        

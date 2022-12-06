@@ -7,7 +7,7 @@ from character_class import *
 from goal_class import *
 
 class Goal:
-
+    
     def __init__(self, goal_name: str, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int, gold_goal: int):
         self.goal_name = goal_name
         self.animal_xp_goal = animal_xp_goal
@@ -29,7 +29,8 @@ class Goal:
 
     def get_gold_xp_goal(self):
         return self.get_gold_xp_goal        
-        
+    
+    # after asking the user what goal they want to choose for the game, this method sets the related statistics as the goal of the current game
     def goal_values(self, goal_name):
         if goal_name == "buy horse":
             animal_xp_goal = 30
@@ -54,6 +55,7 @@ class Goal:
     def goal_reached(self, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int, gold_goal: int): # get goal values to check against acquired gold and xp
 
         # check if this method is correct!
+        # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
          
         if animal_xp_goal >= self.char_status["Animal xp"]:
             animal_goal_reached = True
