@@ -6,12 +6,12 @@ from AllFunctions import *
 from character_class import *
 from goal_class import *
 
-# create a character with a name and gender. It keeps track of the amount of gold and experience you have, and the mission day 
+# create a character with a name and character title. It keeps track of the amount of gold and experience you have, and the mission day 
 class Character:
 
-    def __init__ (self, name: str, gender: str, current_quest_day: int, gold: int, animal_xp: int, dex_xp: int, entertainment_xp: int):
+    def __init__ (self, name: str, character_title: str, current_quest_day: int, gold: int, animal_xp: int, dex_xp: int, entertainment_xp: int):
         self.name = name
-        self.gender = gender
+        self.character_title = character_title
         self.current_quest_day = current_quest_day
         self.gold = gold
         self.animal_xp = animal_xp
@@ -20,13 +20,13 @@ class Character:
 
     # print the status of the character
     def __str__(self):
-        return f"\n\nYour character's statistics are:\n\nName: {self.name}\nGender: {self.gender}\nDay: {self.current_quest_day}\nGold: {self.gold}\nAnimal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp: {self.entertainment_xp}\n" # of {mission_days} quest days" --> add this later
+        return f"\n\nYour character's statistics are:\n\nName: {self.name}\nYour character's title: {self.character_title}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\nAnimal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp: {self.entertainment_xp}\n" # of {mission_days} quest days" --> add this later
 
     def get_name(self):
         return self.name
 
-    def get_gender(self):
-        return self.gender
+    def get_character_title(self):
+        return self.character_title
 
     def get_current_quest_day(self):
         return self.current_quest_day
