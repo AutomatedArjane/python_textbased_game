@@ -21,15 +21,14 @@ def create_character():
             break
 
     # create the statistics of the character     
-    Quest_day = 0
-    Gold = 0
-    Animal_xp = 0
-    Dex_xp = 0
-    Entertainment_xp = 0
-    Level = 0
+    current_quest_day = 0
+    gold = 0
+    animal_xp = 0
+    dex_xp = 0
+    entertainment_xp = 0
     
     # create a character "mycharacter"
-    mycharacter = Character(name, gender, Quest_day, Gold, Animal_xp, Dex_xp, Entertainment_xp, Level)
+    mycharacter = Character(name, gender, current_quest_day, gold, animal_xp, dex_xp, entertainment_xp)
     return mycharacter
 
 ##########################################################################
@@ -39,21 +38,19 @@ def create_character():
 # create a character using the class "Goal"
 def create_goal():
     # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
-    goal_name = input('You can choose from three different goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of xp and gold you need to collect.\nType the name of the goal you want to choose here: ') # ask the user for their preferred goal
     
-    Goal.goal_values(goal_name) # this doesn't work, find out why
-
+    while True: # ask the user for their preferred goal, only specific replies are allowed
+        goal_name = input('You can choose from three different goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of xp and gold you need to collect.\nType the name of the goal you want to choose here: ') # ask the user for their preferred goal
+        if goal_name not in ("buy horse", "get own house", "buy lute"):
+            print("Please pick one of the available options.")
+        else:
+            break    
+    
+    
     # create a goal "mygoal"
-    mygoal = Goal(goal_name, animal_xp_goal, dex_xp_goal, entertainment_xp_goal, gold_goal) # check why there's wriggly lines here
+    Goal.goal_values(goal_name)
+    mygoal = Goal(goal_name, Goal.get_total_quest_days, Goal.get_animal_xp_goal, Goal.get_dex_xp_goal, Goal.get_entertainment_xp_goal, Goal.get_gold_goal)
+
     return mygoal
 
-
-def game_won(mycharacter: Character, mygoal: Goal): # I coded this very fast, check that it works!
-    print(f"Congratulations, you achieved your goal: {mygoal.goal_name}.\n\nYou won on day {mycharacter.get_quest_day} of {mygoal.get_no_of_quest_days}. You collected:\n- {mycharacter.get_gold} of {mygoal.get_gold} gold\n- {mycharacter.get_animal_xp} of {mygoal.get_animal_xp} gold\n- {mycharacter.get_dex_xp} of {mygoal.get_dex_xp} gold\n- {mycharacter.get_entertainment_xp} of {mygoal.get_entertainment_xp} gold\n You have achieved level {mycharacter.get_level}")
-
-
-def game_lost(mycharacter: Character, mygoal: Goal): # I coded this very fast, check that it works!
-    print(f"Unfortunately you didn't manage to achieve your goal: buy horse") # continue coding this
-
-    print(f"It is now the last day of your quest, day {mygoal.get_no_of_quest_days}. Unfortunately you haven't managed to achieve your goal: {mygoal.goal_name}.\n\nYou collected:\n- {mycharacter.get_gold} of {mygoal.get_gold} gold\n- {mycharacter.get_animal_xp} of {mygoal.get_animal_xp} gold\n- {mycharacter.get_dex_xp} of {mygoal.get_dex_xp} gold\n- {mycharacter.get_entertainment_xp} of {mygoal.get_entertainment_xp} gold\n You have achieved level {mycharacter.get_level}")
 
