@@ -86,25 +86,25 @@ class Goal:
         # check if this method is correct!
         # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
 
-        if Character.get_current_quest_day() <= total_quest_days:
+        if mycharacter.get_current_quest_day() <= total_quest_days:
             quest_day_success = True
 
-        if animal_xp_goal >= animal_xp_goal: # this is not correct, fix it
+        if animal_xp_goal >= animal_xp: # this is not correct, fix it
             animal_goal_reached = True
         else:
             animal_goal_reached = False
 
-        if dex_xp_goal >= self.char_status["Dex xp"]:
+        if dex_xp_goal >= dex_xp:
             dex_goal_reached = True
         else:
             dex_goal_reached = False
 
-        if entertainment_xp_goal >= self.char_status["Entertainment xp"]:
+        if entertainment_xp_goal >= entertainment_xp:
             entertainment_goal_reached = True
         else:
             entertainment_goal_reached = False
 
-        if gold_goal >= self.char_status["Gold"]:
+        if gold_goal >= gold:
             gold_goal_reached = True
 
         if quest_day_success == True and animal_goal_reached == True and dex_goal_reached == True and entertainment_goal_reached == True and gold_goal_reached == True:
@@ -123,3 +123,11 @@ class Goal:
 
         print(f"It is now the last day of your quest, day {mygoal.get_total_quest_days}. Unfortunately you haven't managed to achieve your goal: {mygoal.goal_name}.\n\nYou collected:\n- {mycharacter.get_gold} of {mygoal.get_gold} gold\n- {mycharacter.get_animal_xp} of {mygoal.get_animal_xp} gold\n- {mycharacter.get_dex_xp} of {mygoal.get_dex_xp} gold\n- {mycharacter.get_entertainment_xp} of {mygoal.get_entertainment_xp} gold.")
  """
+
+ ##########################################################################
+#                           TO DO IN THIS FILE                           #
+##########################################################################
+
+# Get the goal_reached() function to work
+# Complete the game_won() and game_lost() functions and make sure they work
+# 

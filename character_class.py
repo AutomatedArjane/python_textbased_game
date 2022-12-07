@@ -43,19 +43,28 @@ class Character:
     def get_entertainment_xp(self):
         return self.entertainment_xp
     
-    # increase the xp of the character
-    def gain_animal_xp(self, animal_xp_increase: int):
-        self.animal_xp += animal_xp_increase
-        print(f"You received {self.animal_xp} animal xp for your hard work.")
+    # increase the xp and amount of gold of the character, based on the job they did
+    def gain_gold(self, gained_gold: int):
+        self.gold += gained_gold
+        print(f"You received {self.gained_gold} gold for your work.")
 
-    def gain_dex_xp(self, dex_xp_increase: int):
-        self.dex_xp += dex_xp_increase
-        print(f"You received {self.dex_xp} dexterity xp for your hard work.")
+    def gain_animal_xp(self, gained_animal_xp: int):
+        self.animal_xp += gained_animal_xp
+        print(f"You received {self.gained_animal_xp} animal xp for your hard work.")
 
-    def gain_entertainment_xp(self, entertainment_xp_increase: int):
-        self.entertainment_xp += entertainment_xp_increase
-        print(f"You received {self.entertainment_xp} entertainment xp for your hard work.")
-    
-    def gain_gold(self, gold_increase: int):
-        self.gold += gold_increase
-        print(f"You received {self.gold_increase} gold for your work.")
+    def gain_dex_xp(self, gained_dex_xp: int):
+        self.dex_xp += gained_dex_xp
+        print(f"You received {self.gained_dex_xp} dexterity xp for your hard work.")
+
+    def gain_entertainment_xp(self, gained_entertainment_xp: int):
+        self.entertainment_xp += gained_entertainment_xp
+        print(f"You received {self.gained_entertainment_xp} entertainment xp for your hard work.")
+
+
+
+##########################################################################
+#                           TO DO IN THIS FILE                           #
+##########################################################################
+
+# Get the gain_gold() function and its fellows to work
+# 
