@@ -14,6 +14,8 @@ print(mycharacter)
 mygoal = create_goal()
 print(mygoal)
 
+enter_button()
+
 for x in range(mygoal.get_total_quest_days()):
     choose_travel_destination()
 
