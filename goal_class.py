@@ -25,74 +25,71 @@ class Goal:
     def get_goal_name(self):
         return self.goal_name
 
-    def set_goal_name(self):
-        return self.goal_name
+    def set_goal_name(self, goal_name):
+        self.goal_name = goal_name
 
     def get_total_quest_days(self):
         return self.total_quest_days
     
-    def set_total_quest_days(self):
-        return self.total_quest_days
+    def set_total_quest_days(self, total_quest_days):
+        self.total_quest_days = total_quest_days
 
     def get_animal_xp_goal(self):
         return self.get_animal_xp_goal
 
-    def set_animal_xp_goal(self):
-        return self.get_animal_xp_goal
+    def set_animal_xp_goal(self, animal_xp_goal):
+        self.animal_xp_goal = animal_xp_goal
     
     def get_dex_xp_goal(self):
         return self.dex_xp_goal        
     
-    def set_dex_xp_goal(self):
-        return self.dex_xp_goal        
+    def set_dex_xp_goal(self, dex_xp_goal):
+        self.dex_xp_goal = dex_xp_goal        
 
     def get_entertainment_xp_goal(self):
         return self.entertainment_xp_goal        
 
-    def set_entertainment_xp_goal(self):
-        return self.entertainment_xp_goal        
+    def set_entertainment_xp_goal(self, entertainment_xp_goal):
+        self.entertainment_xp_goal = entertainment_xp_goal
 
     def get_gold_goal(self):
         return self.gold_goal        
 
-    def set_gold_goal(self):
-        return self.gold_goal        
-
+    def set_gold_goal(self, gold_goal):
+        self.gold_goal = gold_goal
     
     # after asking the user what goal they want to choose for the game, this method sets the related statistics as the goal of the current game
-    def goal_values(self, goal_name):
+    def set_goal_values(self, goal_name):
         if goal_name == "buy horse":
-            total_quest_days = 7
-            animal_xp_goal = 30
-            dex_xp_goal = 10
-            entertainment_xp_goal = 0
-            gold_goal = 300
+            self.set_total_quest_days(7)
+            self.set_gold_goal(300)
+            self.set_animal_xp_goal(30)
+            self.set_dex_xp_goal(10)
+            self.set_entertainment_xp_goal(0)
 
         elif goal_name == "get own house":
-            total_quest_days = 10
-            animal_xp_goal = 0
-            dex_xp_goal = 50
-            entertainment_xp_goal = 0
-            gold_goal = 400
+            self.set_total_quest_days(10)
+            self.set_gold_goal(400)
+            self.set_animal_xp_goal(0)
+            self.set_dex_xp_goal(50)
+            self.set_entertainment_xp_goal(0)
 
         elif goal_name == "buy lute":
-            total_quest_days = 9
-            animal_xp_goal = 0
-            dex_xp_goal = 10
-            entertainment_xp_goal = 60
-            gold_goal = 200
-        
-        return total_quest_days, animal_xp_goal, dex_xp_goal, entertainment_xp_goal, gold_goal
+            self.set_total_quest_days(9)
+            self.set_gold_goal(200)
+            self.set_animal_xp_goal(0)
+            self.set_dex_xp_goal(10)
+            self.set_entertainment_xp_goal(60)
 
-    def goal_reached(self, total_quest_days: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int, gold_goal: int): # get goal values to check against acquired gold and xp
+    def goal_reached(self, total_quest_days: int, gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int): # get goal values to check against acquired gold and xp
 
         # check if this method is correct!
         # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
 
-        if current_quest_day <= total_quest_days:
+        if Character.get_current_quest_day() <= total_quest_days:
             quest_day_success = True
 
-        if animal_xp_goal >= self.char_status["Animal xp"]: # this is not correct, fix it
+        if animal_xp_goal >= animal_xp_goal: # this is not correct, fix it
             animal_goal_reached = True
         else:
             animal_goal_reached = False
