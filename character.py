@@ -1,10 +1,31 @@
+from day_tasks import (
+    choose_travel_destination,
+    choose_job,
+    do_job
+)
+
+from main import (
+    create_character,
+    create_goal,
+)
+
+from introduction import (
+    enter_button,
+    game_intro
+)
+
+from character import (
+    Character
+)
+
+from goal import (
+    Goal
+)
+
 ##########################################################################
 #                            CHARACTER CLASS                             #
 ##########################################################################
 
-from AllFunctions import *
-from character_class import *
-from goal_class import *
 
 # create a character with a name and character title. It keeps track of the amount of gold and experience you have, and the mission day 
 class Character:

@@ -1,10 +1,30 @@
+from day_tasks import (
+    choose_travel_destination,
+    choose_job,
+    do_job
+)
+
+from main import (
+    create_character,
+    create_goal,
+)
+
+from introduction import (
+    enter_button,
+    game_intro
+)
+
+from character import (
+    Character
+)
+
+from goal import (
+    Goal
+)
+
 ##########################################################################
 #                                GOAL                                    #
 ##########################################################################
-
-from AllFunctions import *
-from character_class import *
-from goal_class import *
 
 # create a goal for the game. Each game has subgoals consisting of the amount of gold and xp you need to collect
 class Goal:
@@ -16,7 +36,6 @@ class Goal:
         self.animal_xp_goal = animal_xp_goal
         self.dex_xp_goal = dex_xp_goal
         self.entertainment_xp_goal = entertainment_xp_goal
-
 
     # print the goal that is chosen
     def __str__(self):

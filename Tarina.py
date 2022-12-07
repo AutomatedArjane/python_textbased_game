@@ -1,6 +1,18 @@
-from AllFunctions import *
-from character_class import *
-from goal_class import *
+from day_tasks import (
+    choose_travel_destination,
+    choose_job,
+    do_job
+)
+
+from main import (
+    create_character,
+    create_goal,
+)
+
+from introduction import (
+    enter_button,
+    game_intro
+)
 
 game_intro()
 
@@ -17,7 +29,7 @@ print(mygoal)
 enter_button()
 
 for x in range(mygoal.get_total_quest_days()):
-    choose_travel_destination()
+    mygoal.choose_travel_destination()
 
 #game_won(mycharacter, mygoal)
 
