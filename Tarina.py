@@ -1,12 +1,6 @@
-from day_tasks import (
-    choose_travel_destination,
-    choose_job,
-    do_job
-)
-
 from main import (
     create_character,
-    create_goal,
+    print_greeting
 )
 
 from introduction import (
@@ -16,22 +10,18 @@ from introduction import (
 
 game_intro()
 
-mycharacter = create_character()
-print(mycharacter)
+character = create_character()
+print(character)
 
-#mycharacter.gain_animal_xp(40)
-#mycharacter.get_animal_xp()
-#print(mycharacter)
-
-mygoal = create_goal()
-print(mygoal)
+# somehow print goal
 
 enter_button()
 
-for x in range(mygoal.get_total_quest_days()):
-    mygoal.choose_travel_destination()
+for x in range(character.goal.get_total_quest_days()):
+    print_greeting(character)
+    character.goal.choose_travel_destination()
 
-#game_won(mycharacter, mygoal)
+#game_won(character, goal)
 
 
 ##########################################################################

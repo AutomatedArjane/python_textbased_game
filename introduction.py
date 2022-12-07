@@ -1,26 +1,7 @@
-from day_tasks import (
-    choose_travel_destination,
-    choose_job,
-    do_job
-)
+##########################################################################
+#                                GAME INTRO                              #
+##########################################################################
 
-from main import (
-    create_character,
-    create_goal,
-)
-
-from introduction import (
-    enter_button,
-    game_intro
-)
-
-from character import (
-    Character
-)
-
-from goal import (
-    Goal
-)
 
 def enter_button(): # the user can make the text appear block by block through pressing the enter button
     while True:

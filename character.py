@@ -1,21 +1,5 @@
-from day_tasks import (
-    choose_travel_destination,
-    choose_job,
-    do_job
-)
-
-from main import (
-    create_character,
-    create_goal,
-)
-
 from introduction import (
-    enter_button,
-    game_intro
-)
-
-from character import (
-    Character
+    enter_button
 )
 
 from goal import (
@@ -38,6 +22,7 @@ class Character:
         self.animal_xp = animal_xp
         self.dex_xp = dex_xp
         self.entertainment_xp = entertainment_xp
+        self.goal = self.create_goal()
 
     # print the status of the character
     def __str__(self):
@@ -80,6 +65,31 @@ class Character:
     def gain_entertainment_xp(self, gained_entertainment_xp: int):
         self.entertainment_xp += gained_entertainment_xp
         print(f"You received {self.gained_entertainment_xp} entertainment xp for your hard work.")
+
+    def create_goal():
+    
+        enter_button()
+        # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
+        while True:
+            goal_name = input('You are able to choose between three goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of experience points (xp) and gold you need to collect.\n\nType the name of the goal you wish to choose here: ') # ask the user for their preferred goal
+        
+            if goal_name not in ("buy horse", "get own house", "buy lute"):
+                if goal_name == "quit":
+                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
+                    exit()
+                
+                else:
+                    print("\nPlease pick one of the available options.\n")
+                
+            else:
+                break
+
+        goal = Goal(goal_name, Goal.get_total_quest_days, Goal.get_animal_xp_goal, Goal.get_dex_xp_goal, Goal.get_entertainment_xp_goal, Goal.get_gold_goal)
+
+        # create a goal "goal"
+        goal.set_goal_values(goal_name)
+
+        return goal
 
 
 

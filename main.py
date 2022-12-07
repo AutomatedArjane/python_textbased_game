@@ -1,17 +1,5 @@
-from day_tasks import (
-    choose_travel_destination,
-    choose_job,
-    do_job
-)
-
-from main import (
-    create_character,
-    create_goal,
-)
-
 from introduction import (
-    enter_button,
-    game_intro
+    enter_button
 )
 
 from character import (
@@ -25,6 +13,10 @@ from goal import (
 ##########################################################################
 #                           CHARACTER CREATION                           #
 ##########################################################################
+
+def print_greeting(character):
+    print(f"Good morning, {character.get_character_title()} {character.get_name()}! It is currently day "
+    f"{character.get_current_quest_day()} of {character.goal.get_total_quest_days()} of your quest {character.goal.get_goal_name()}")
 
 
 # create a character using the class "Character"
@@ -63,9 +55,9 @@ def create_character():
     
     enter_button()
 
-    # create a character "mycharacter"
-    mycharacter = Character(name, character_title, current_quest_day, gold, animal_xp, dex_xp, entertainment_xp)
-    return mycharacter
+    # create a character "character"
+    character = Character(name, character_title, current_quest_day, gold, animal_xp, dex_xp, entertainment_xp)
+    return character
 
 ##########################################################################
 #                              GOAL SETTING                              #
@@ -90,9 +82,9 @@ def create_goal():
         else:
             break
 
-    mygoal = Goal(goal_name, Goal.get_total_quest_days, Goal.get_animal_xp_goal, Goal.get_dex_xp_goal, Goal.get_entertainment_xp_goal, Goal.get_gold_goal)
+    goal = Goal(goal_name, Goal.get_total_quest_days, Goal.get_animal_xp_goal, Goal.get_dex_xp_goal, Goal.get_entertainment_xp_goal, Goal.get_gold_goal)
 
-    # create a goal "mygoal"
-    mygoal.set_goal_values(goal_name)
+    # create a goal "goal"
+    goal.set_goal_values(goal_name)
 
-    return mygoal
+    return goal
