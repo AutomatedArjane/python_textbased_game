@@ -8,39 +8,71 @@ from goal_class import *
 #                           CHARACTER CREATION                           #
 ##########################################################################
 
+def enter_button(): # the user can make the text appear block by block through pressing the enter button
+    while True:
+
+        reply = input("")
+        if reply == "":
+            break
+
+        elif reply =="quit":
+            print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
+            exit()            
+
+        else: 
+            print('\nOnly the enter button enables you to continue. Press enter or type "quit" if you want to quit the game.\n')
+
 def game_intro():
-    # PICK a better name for the game
-    print("\n------------------------------------------------------------------------------------------\n\n")
-    print("\n\nWELCOME TO THE STORY GAME\n\n\nThis game was created by Arjane Kerkhoven on 11.12.2022,\nas part of the Ohjelmoinnin Perusteet course at JAMK in Jyväskylä.\n\n")
+    
+    print("\n------------------------------------------------------------------------------------------")
+    print('WELCOME TO THE FANTASY GAME "WOIANZII"\n\n\nThis game was created by Arjane Kerkhoven on 11.12.2022,\nas part of the Ohjelmoinnin Perusteet course at JAMK in Jyväskylä.\n\n(Click in the console and press enter to continue. Type "quit" to exit the game.)\n')
+    print("------------------------------------------------------------------------------------------")
+
+    enter_button()
+
     print("You can play this game with your keyboard. The program will\nprompt you with a question, and you can type the answer into the console.\nDuring the game, you go on a quest that you can choose yourself.")
-    print("In order to fulfill this quest, you have to gain enough gold and\nexperience points (divided over 3 categories). Each quest has different end goals.\n")
+    print("In order to fulfill this quest, you have to gain enough gold and\nexperience points (divided over 3 categories). Each quest has different end goals.\n(press enter to continue)\n")
+    print("------------------------------------------------------------------------------------------")
+    
+    enter_button()
+
     print("At the beginning of the game, you are asked to provide some information\nabout your character (you can make that up yourself). The game then shows")
-    print("you your character and the amount of gold and xp they have.\nIt also shows you what the current day is. After this, you choose a goal.\n")
+    print("you your character and the amount of gold and xp they have (zero is default).\nIt also shows you what the current day is. After this, you choose a goal.\n")
+    print("------------------------------------------------------------------------------------------")
+
+    enter_button()
+
     print("The goal's requirements are shown, and this is where the main part\nof the game starts. For each day of your quest, you can choose a city to visit.")
     print("Each city has various jobs on offer that can gain you gold and xp.\nTry to choose the jobs that bring you closer to your goal.\n")
+    print("------------------------------------------------------------------------------------------")
+
+    enter_button()
+
     print("Once the days are up, you have either achieved your goal,\nor you have not. If you didn't succeed, you can always try again.\n\nGood luck!")
-    print('\nPs. If you want to quit at any time, please type "quit" as a reply to a question.')
-    print("\n------------------------------------------------------------------------------------------\n\n")
+    print('\nPs. If you want to quit at any time, please type "quit" as a reply to any question.')
+    print("------------------------------------------------------------------------------------------")
+
+    enter_button()
 
     while True:
-        answer = input("Are you ready to play the game? Type yes or no: ")
+        answer = input("\nAre you ready to play the game? Type yes or no: ")
 
         if answer not in ("yes", "Yes", "no", "No"):
             if answer == "quit":
-                print("You have quit the game, thank you for playing. Come back soon to play again!")
+                print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                 exit()
                 
             else:
                 print("\nPlease pick one of the available options.\n")
                 
         elif answer == "no" or answer == "No":
-            print("You have quit the game, thank you for playing. Come back soon to play again!")
+            print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
             exit()
 
         elif answer == "yes" or answer == "Yes":
             break
 
-    print("Great! Now it's time to create your character. Start with picking a name!")
+    print("\nExcellent! Welcome to the fantasy world of Woianzii. Now, it is time to create your character. Start by choosing your name:\n")
 
 # create a character using the class "Character"
 def create_character():
@@ -48,10 +80,10 @@ def create_character():
     name = input("What is your name? ") # ask the user for the name of their character
     
     while True: # ask the user for the character's gender, only specific replies are allowed
-        gender = input("How do you wish to be known? Choose male/female/other: ")
+        gender = input("\nHow do you wish to be known? Choose male/female/other: ")
         if gender not in ("male", "female", "other"):
             if gender == "quit":
-                print("You have quit the game, thank you for playing. Come back soon to play again!")
+                print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                 exit()
             
             else:
@@ -73,6 +105,8 @@ def create_character():
     animal_xp = 0
     dex_xp = 0
     entertainment_xp = 0
+
+    print("It is a pleasure to meet you, {character_title} {name}!")
     
     # create a character "mycharacter"
     mycharacter = Character(name, character_title, current_quest_day, gold, animal_xp, dex_xp, entertainment_xp)
@@ -86,11 +120,11 @@ def create_character():
 def create_goal():
     # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
     while True:
-        goal_name = input('You can choose from three different goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of xp and gold you need to collect.\n\nType the name of the goal you want to choose here: ') # ask the user for their preferred goal
+        goal_name = input('You are able to choose between three goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of experience points (xp) and gold you need to collect.\n\nType the name of the goal you wish to choose here: ') # ask the user for their preferred goal
     
         if goal_name not in ("buy horse", "get own house", "buy lute"):
             if goal_name == "quit":
-                print("You have quit the game, thank you for playing. Come back soon to play again!")
+                print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                 exit()
             
             else:
@@ -114,11 +148,11 @@ def create_goal():
 def choose_travel_destination():
     
     while True: # add name and character title
-        town_name = input(f"Good morning, character_title() name()! It is now day current_quest_day() of total_quest_days() of your quest goal_name().\nTo which town would you like to travel today? You can choose between Novigrad, Oxenfurt, Vengerberg, Brugge and Hengfors: ")
+        town_name = input(f"Good morning, character_title() name()! It is currently day current_quest_day() of total_quest_days() of your quest goal_name().\nTo which town would you like to travel today? You can choose between Novigrad, Oxenfurt, Vengerberg, Brugge and Hengfors: ")
 
         if town_name not in ("Novigrad", "Oxenfurt", "Vengerberg", "Brugge", "Hengfors"):
             if town_name == "quit":
-                print("You have quit the game, thank you for playing. Come back soon to play again!")
+                print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                 exit()
             
             else:
@@ -140,7 +174,7 @@ def choose_job(town_name): # OPTIONAL: add bonus xp depending on city and job!
             
             if job_name not in ("farming", "killing monsters", "juggling", "singing"):
                 if job_name == "quit":
-                    print("You have quit the game, thank you for playing. Come back soon to play again!")
+                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                     exit()
                 
                 else:
@@ -154,7 +188,7 @@ def choose_job(town_name): # OPTIONAL: add bonus xp depending on city and job!
 
             if job_name not in ("hunting", "farming", "juggling", "singing"):
                 if job_name == "quit":
-                    print("You have quit the game, thank you for playing. Come back soon to play again!")
+                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                     exit()
                 
                 else:
@@ -167,7 +201,7 @@ def choose_job(town_name): # OPTIONAL: add bonus xp depending on city and job!
 
             if job_name not in ("hunting", "building", "killing monsters", "singing"):
                 if job_name == "quit":
-                    print("You have quit the game, thank you for playing. Come back soon to play again!")
+                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                     exit()
                 
                 else:
@@ -181,7 +215,7 @@ def choose_job(town_name): # OPTIONAL: add bonus xp depending on city and job!
 
             if job_name not in ("farming", "building", "killing monsters", "juggling"):
                 if job_name == "quit":
-                    print("You have quit the game, thank you for playing. Come back soon to play again!")
+                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                     exit()
                 
                 else:
@@ -195,7 +229,7 @@ def choose_job(town_name): # OPTIONAL: add bonus xp depending on city and job!
 
             if job_name not in ("hunting", "building", "killing monsters", "singing"):
                 if job_name == "quit":
-                    print("You have quit the game, thank you for playing. Come back soon to play again!")
+                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
                     exit()
                 
                 else:
@@ -212,7 +246,7 @@ def choose_job(town_name): # OPTIONAL: add bonus xp depending on city and job!
 
 
 def do_job(job_name):
-    print(f"you entered the do_job function with the job '{job_name}'")
+    print(f'\nyou entered the do_job function with the job "{job_name}"\n')
     
 """     gained_gold = 0
     gained_animal_xp = 0

@@ -20,7 +20,7 @@ class Goal:
 
     # print the goal that is chosen
     def __str__(self):
-        return f"\nThe goal you chose is: {self.goal_name}. You have {self.total_quest_days} days to achieve this goal,\nand to do this you will have to collect enough gold, and enough xp of various types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal xp\n- {self.dex_xp_goal} dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n\nGood luck!\n"
+        return f"\n------------------------------------------------------------------------------------------\nThe goal you chose is: {self.goal_name}. You have {self.total_quest_days} days to achieve this goal,\nand in order to do this you will have to collect a sufficient amount of gold, and enough xp of various types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal xp\n- {self.dex_xp_goal} dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n\nGood luck!\n------------------------------------------------------------------------------------------\n"
 
     def get_goal_name(self):
         return self.goal_name

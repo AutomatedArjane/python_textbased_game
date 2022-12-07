@@ -20,7 +20,7 @@ class Character:
 
     # print the status of the character
     def __str__(self):
-        return f"\n\nYour character's statistics are:\n\nName: {self.name}\nYour character's title: {self.character_title}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\nAnimal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp: {self.entertainment_xp}\n" # of {mission_days} quest days" --> add this later
+        return f"\n\nYour character's statistics are:\n\nName: {self.name}\nYour character's title: {self.character_title}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\n\nAnimal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp: {self.entertainment_xp}\n" # of {mission_days} quest days" --> add this later
 
     def get_name(self):
         return self.name
