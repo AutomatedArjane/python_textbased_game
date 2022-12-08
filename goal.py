@@ -2,6 +2,13 @@ from introduction import (
     enter_button
 )
 
+from character_growth import (
+    gain_gold,
+    gain_animal_xp,
+    gain_dex_xp,
+    gain_entertainment_xp
+)
+
 ##########################################################################
 #                                GOAL                                    #
 ##########################################################################
@@ -154,7 +161,7 @@ class Goal:
                     break
 
             elif town_name == "Brugge":
-                job_name = input(f'\n\n {town_name} is well-known for its beautiful old buildings and it has many temples. In this coastal city\nthey speak an unusual form of Nilfgaardian, called “West-Vlaams”. We could use someone to help us build more temples,\nthough we also have other jobs on offer: farming, building, killing monsters and juggling. Take your pick: ')
+                job_name = input(f'\n\n{town_name} is well-known for its beautiful old buildings and it has many temples. In this coastal city\nthey speak an unusual form of Nilfgaardian, called “West-Vlaams”. We could use someone to help us build more temples,\nthough we also have other jobs on offer: farming, building, killing monsters and juggling. Take your pick: ')
 
                 if job_name not in ("farming", "building", "killing monsters", "juggling"):
                     if job_name == "quit":
@@ -237,12 +244,11 @@ class Goal:
             gained_gold = 35
             gained_entertainment_xp = 9
 
-        self.gain_gold(gained_gold)
-        self.gain_animal_xp(gained_animal_xp)
-        self.gain_dex_xp(gained_dex_xp)
-        self.gain_entertainment_xp(gained_entertainment_xp)
+        gain_gold(gained_gold)
+        gain_animal_xp(gained_animal_xp)
+        gain_dex_xp(gained_dex_xp)
+        gain_entertainment_xp(gained_entertainment_xp)
         print("You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp and {gained_entertainment_xp} by {job_name}. The people you helped are very grateful!")
-        print(self.character)
 
 
     def goal_reached(self, total_quest_days: int, gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int): # get goal values to check against acquired gold and xp
@@ -250,7 +256,7 @@ class Goal:
         # check if this method is correct!
         # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
 
-        if character.get_current_quest_day() <= total_quest_days:
+        if Character.character.get_current_quest_day() <= total_quest_days:
             quest_day_success = True
 
         if animal_xp_goal >= animal_xp: # this is not correct, fix it

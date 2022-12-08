@@ -15,8 +15,8 @@ from goal import (
 ##########################################################################
 
 def print_greeting(character):
-    print(f"Good morning, {character.get_character_title()} {character.get_name()}! It is currently day "
-    f"{character.get_current_quest_day()} of {character.goal.get_total_quest_days()} of your quest {character.goal.get_goal_name()}")
+    print(f'Good morning, {character.get_character_title()} {character.get_name()}! It is currently day '
+    f'{character.get_current_quest_day()} of {character.goal.get_total_quest_days()} of your quest "{character.goal.get_goal_name()}"')
 
 
 # create a character using the class "Character"

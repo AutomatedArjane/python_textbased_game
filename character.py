@@ -1,7 +1,3 @@
-from introduction import (
-    enter_button
-)
-
 from goal import (
     Goal
 )
@@ -26,7 +22,7 @@ class Character:
 
     # print the status of the character
     def __str__(self):
-        return f"Your character's statistics are:\n\nName: {self.character_title} {self.name}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\n\nAnimal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp: {self.entertainment_xp}\n\n------------------------------------------------------------------------------------------" # of {mission_days} quest days" --> add this later
+        return f"\nYour character's statistics are:\n\nName: {self.character_title} {self.name}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\n\nAnimal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp: {self.entertainment_xp}\n\n------------------------------------------------------------------------------------------" # of {mission_days} quest days" --> add this later
 
     def get_name(self):
         return self.name
@@ -48,27 +44,9 @@ class Character:
     
     def get_entertainment_xp(self):
         return self.entertainment_xp
+
+    def create_goal(self):
     
-    # increase the xp and amount of gold of the character, based on the job they did
-    def gain_gold(self, gained_gold: int):
-        self.gold += gained_gold
-        print(f"You received {self.gained_gold} gold for your work.")
-
-    def gain_animal_xp(self, gained_animal_xp: int):
-        self.animal_xp += gained_animal_xp
-        print(f"You received {self.gained_animal_xp} animal xp for your hard work.")
-
-    def gain_dex_xp(self, gained_dex_xp: int):
-        self.dex_xp += gained_dex_xp
-        print(f"You received {self.gained_dex_xp} dexterity xp for your hard work.")
-
-    def gain_entertainment_xp(self, gained_entertainment_xp: int):
-        self.entertainment_xp += gained_entertainment_xp
-        print(f"You received {self.gained_entertainment_xp} entertainment xp for your hard work.")
-
-    def create_goal():
-    
-        enter_button()
         # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
         while True:
             goal_name = input('You are able to choose between three goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of experience points (xp) and gold you need to collect.\n\nType the name of the goal you wish to choose here: ') # ask the user for their preferred goal
