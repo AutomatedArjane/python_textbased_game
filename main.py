@@ -57,14 +57,13 @@ def create_character():
 
     # create a character "character"
     character = Character(name, character_title, current_quest_day, gold, animal_xp, dex_xp, entertainment_xp)
-    return character
 
-##########################################################################
-#                              GOAL SETTING                              #
-##########################################################################
+    return character
+""" 
 
 # create a character using the class "Goal"
 def create_goal():
+    print("I am using this 'create goal' function")
     
     enter_button()
     # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
@@ -86,5 +85,7 @@ def create_goal():
 
     # create a goal "goal"
     goal.set_goal_values(goal_name)
+    
+    print(goal)
 
-    return goal
+    return goal """

@@ -11,9 +11,9 @@ from introduction import (
 game_intro()
 
 character = create_character()
+enter_button()
 print(character)
-
-# somehow print goal
+print("Good luck!")
 
 enter_button()
 

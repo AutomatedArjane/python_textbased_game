@@ -2,8 +2,6 @@ from introduction import (
     enter_button
 )
 
-import character_growth
-
 ##########################################################################
 #                                GOAL                                    #
 ##########################################################################
@@ -21,7 +19,12 @@ class Goal:
 
     # print the goal that is chosen
     def __str__(self):
-        return f"\n------------------------------------------------------------------------------------------\nThe goal you chose is: {self.goal_name}. You have {self.total_quest_days} days to achieve this goal,\nand in order to do this you will have to collect a sufficient amount of gold, and enough xp of various types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal xp\n- {self.dex_xp_goal} dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n\nGood luck!\n------------------------------------------------------------------------------------------\n"
+        return (f"\n------------------------------------------------------------------------------------------\n\n"
+        f"The goal you chose is: {self.goal_name}. You have {self.total_quest_days} days to achieve this goal,\n"
+        f"and in order to do this you will have to collect a sufficient amount of gold, and enough xp of various "
+        f"types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal xp\n- {self.dex_xp_goal} "
+        f"dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n\n"
+        f"------------------------------------------------------------------------------------------\n")
 
     def get_goal_name(self):
         return self.goal_name
@@ -247,7 +250,7 @@ class Goal:
 
         elif job_name == "juggling":
             print(f"\n\nGood morrow on this good morrow! We are in need of a jester, a juggler who jaunts. "
-            f"Please come to our\nperfect party tonight and entertain us. For a good reward of course!"
+            f"Please come to our\nperfect party tonight and entertain us. For a good reward of course!\n"
             f"------------------------------------------------------------------------------------------")
             gained_gold = 25
             gained_dex_xp = 4
@@ -261,16 +264,33 @@ class Goal:
             gained_gold = 35
             gained_entertainment_xp = 9
 
-        self.goal.gain_gold(gained_gold)
-        character_growth.gain_animal_xp(gained_animal_xp)
-        character_growth.gain_dex_xp(gained_dex_xp)
-        character_growth.gain_entertainment_xp(gained_entertainment_xp)
-        print("gained_gold")
-        print(f"You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp and {gained_entertainment_xp} by {job_name}. The people you helped are very grateful!")
+        print(f"You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp "
+        f"and {gained_entertainment_xp} by {job_name}. The people you helped are very grateful!")
 
+        return gained_gold, gained_animal_xp, gained_dex_xp, gained_entertainment_xp
+"""         self.gain_gold(gained_gold)
+        self.gain_animal_xp(gained_animal_xp)
+        self.gain_dex_xp(gained_dex_xp)
+        self.gain_entertainment_xp(gained_entertainment_xp) """
 
+"""         # increase the xp and amount of gold of the character, based on the job they did
+    def gain_gold(self, gained_gold: int):
+        self.gold += gained_gold
+        print(f"You received {self.gained_gold} gold for your work.")
 
+    def gain_animal_xp(self, gained_animal_xp: int):
+        self.animal_xp += gained_animal_xp
+        print(f"You received {self.gained_animal_xp} animal xp for your hard work.")
 
+    def gain_dex_xp(self, gained_dex_xp: int):
+        self.dex_xp += gained_dex_xp
+        print(f"You received {self.gained_dex_xp} dexterity xp for your hard work.")
+
+    def gain_entertainment_xp(self, gained_entertainment_xp: int):
+        self.entertainment_xp += gained_entertainment_xp
+        print(f"You received {self.gained_entertainment_xp} entertainment xp for your hard work.")
+
+ """
     ##########################################################################
     #                           TO DO IN THIS FILE                           #
     ##########################################################################

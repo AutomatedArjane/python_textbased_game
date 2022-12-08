@@ -45,8 +45,12 @@ class Character:
     def get_entertainment_xp(self):
         return self.entertainment_xp
 
+##########################################################################
+#                              GOAL SETTING                              #
+##########################################################################
+
     def create_goal(self):
-    
+
         # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
         while True:
             goal_name = input('You are able to choose between three goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of experience points (xp) and gold you need to collect.\n\nType the name of the goal you wish to choose here: ') # ask the user for their preferred goal
@@ -67,7 +71,12 @@ class Character:
         # create a goal "goal"
         goal.set_goal_values(goal_name)
 
+        print(goal)
+
         return goal
+
+    def increase_gold_xp(): # make this work
+        Character.get_gold()
 
     def goal_reached(self, total_quest_days: int, gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int): # get goal values to check against acquired gold and xp
 
