@@ -45,7 +45,7 @@ def create_character():
         character_title = "Honorable"
 
     # create the statistics of the character     
-    current_quest_day = 0
+    current_quest_day = 1
     gold = 0
     animal_xp = 0
     dex_xp = 0

@@ -2,12 +2,7 @@ from introduction import (
     enter_button
 )
 
-from character_growth import (
-    gain_gold,
-    gain_animal_xp,
-    gain_dex_xp,
-    gain_entertainment_xp
-)
+import character_growth
 
 ##########################################################################
 #                                GOAL                                    #
@@ -120,7 +115,9 @@ class Goal:
     def choose_job(self, town_name): # OPTIONAL: add bonus xp depending on city and job!
         while True:
             if town_name == "Novigrad": # Add more explanation abouot the city, add name and character title
-                job_name = input(f"\n\nWelcome to {town_name}, {self.character_title()} {self.name()}! Any hard worker is welcome here. What kind of job would you be interested in today?\nYou can choose between farming, killing monsters, juggling and singing: ")
+                job_name = input(f"\n\nBe welcome to {town_name} today! Any hard worker is greeted warmly here. "
+                f"What kind of job would you be interested in today?\nYou can choose between farming, killing monsters, "
+                f"juggling and singing: ")
                 
                 if job_name not in ("farming", "killing monsters", "juggling", "singing"):
                     if job_name == "quit":
@@ -134,7 +131,10 @@ class Goal:
                     break
 
             elif town_name == "Oxenfurt":
-                job_name = input(f"\n\nWelcome to {town_name}! We are famous for our university, where you are able to study the seven liberal arts.\nMany a famous bard studied here, and it is an excellent city to learn the craft. Would you like to practice your craft and juggle\nor sing for us? Or would you rather do something else? We have hunting, farming, juggling and singing: ")
+                job_name = input(f"\n\nWelcome to {town_name}! We are famous for our university, where you are "
+                f"able to study the seven liberal arts.\nMany a famous bard studied here, and it is an excellent "
+                f"city to learn the craft. Would you like to practice your craft and juggle\nor sing for us? "
+                f"Or would you rather do something else? We have hunting, farming, juggling and singing: ")
 
                 if job_name not in ("hunting", "farming", "juggling", "singing"):
                     if job_name == "quit":
@@ -147,7 +147,10 @@ class Goal:
                     break
 
             elif town_name == "Vengerberg":
-                job_name = input(f"\n\nIn {town_name} you can find mysterious witches and formidable sorcerers. Today we need someone more mundane,\nthough we might have monsters roaming around! Are you perhaps in need of a job, {self.character_title()} {self.name()}?\nWe have hunting, building, killing monsters and singing available for you, which job would you like? ")
+                job_name = input(f"\n\nIn {town_name} you can find mysterious witches and formidable sorcerers. "
+                f"Today we need someone more mundane,\nthough we might have monsters roaming around! Are you "
+                f"perhaps in need of a job?\nWe have hunting, building, killing monsters and singing available "
+                f"for you, which job would you like? ")
 
                 if job_name not in ("hunting", "building", "killing monsters", "singing"):
                     if job_name == "quit":
@@ -161,7 +164,10 @@ class Goal:
                     break
 
             elif town_name == "Brugge":
-                job_name = input(f'\n\n{town_name} is well-known for its beautiful old buildings and it has many temples. In this coastal city\nthey speak an unusual form of Nilfgaardian, called “West-Vlaams”. We could use someone to help us build more temples,\nthough we also have other jobs on offer: farming, building, killing monsters and juggling. Take your pick: ')
+                job_name = input(f'\n\n{town_name} is well-known for its beautiful old buildings and it has '
+                f'many temples. In this coastal city\nthey speak an unusual form of Nilfgaardian, called '
+                f'“West-Vlaams”. We could use someone to help us build more temples,\nthough we also have '
+                f'other jobs on offer: farming, building, killing monsters and juggling. Take your pick: ')
 
                 if job_name not in ("farming", "building", "killing monsters", "juggling"):
                     if job_name == "quit":
@@ -175,7 +181,11 @@ class Goal:
                     break
 
             elif town_name == "Hengfors":
-                job_name = input(f"\n\n{town_name} is a Skelliger city, where they mainly speak Rutsi. This hard-to-understand language is\nsomewhat related to Nilfgaardian, though it sounds very different. If you happen to know any Hengfors sea-shanties,\nbe welcome to sing them for us! If you rather do something else, that is also possible.\nYou can choose between hunting, building, killing monsters and singing: ")
+                job_name = input(f"\n\n{town_name} is a Skelliger city, where they mainly speak Rutsi. "
+                f"This hard-to-understand language is\nsomewhat related to Nilfgaardian, though it sounds "
+                f"very different. If you happen to know any Hengfors sea-shanties,\nbe welcome to sing "
+                f"them for us! If you rather do something else, that is also possible.\nYou can choose "
+                f"between hunting, building, killing monsters and singing: ")
 
                 if job_name not in ("hunting", "building", "killing monsters", "singing"):
                     if job_name == "quit":
@@ -203,9 +213,9 @@ class Goal:
         gained_dex_xp = 0
         gained_entertainment_xp = 0
         
-        
         if job_name == "hunting": # add bonus?
-            print(f"\n\nHello there, hunter {self.name()}! I heard you were in need of a job. We are in dire need of some food,\nso could you perhaps hunt us a couple of rabbits, or a nice fat bird? We would reward you handsomely!")
+            print(f"\n\nHello there, hunter! I heard you were in need of a job. We are in dire need of some food,\n"
+            f"so could you perhaps hunt us a couple of rabbits, or a nice fat bird? We would reward you handsomely!")
             print(f"------------------------------------------------------------------------------------------")
             enter_button()
             gained_gold = 50
@@ -213,86 +223,53 @@ class Goal:
             gained_dex_xp = 4
         
         elif job_name == "farming ":
-            print(f"\n\nBe welcome to this humble farm, {self.character_title()} {self.name()}! We could use your help with the\nharvest today. Of course it goes without saying that you would not work for free!")
+            print(f"\n\nBe welcome to this humble farm! We could use "
+            f"your help with the\nharvest today. Of course it goes without saying that you would not work for free!")
             print(f"------------------------------------------------------------------------------------------")
             gained_gold = 40
             gained_animal_xp = 7
 
         elif job_name == "building":
-            print(f"\n\nWe are looking for someone strong that can help us build a new chicken coop.\nWould you be able to do that? We would give you more than just some nice fried eggs for lunch!")
-            print(f"------------------------------------------------------------------------------------------")
+            print(f"\n\nWe are looking for someone strong that can help us build a new chicken coop.\nWould you "
+            f"be able to do that? We would give you more than just some nice fried eggs for lunch!\n"
+            f"------------------------------------------------------------------------------------------")
             gained_gold = 40
             gained_dex_xp = 7
 
         elif job_name == "killing monsters":
-            print(f"\n\nPlease help us, {self.character_title()} {self.name()}! More than 10 people have vanished already, there must be\na horrible monster hiding in the forest. Are you able to kill it for us? All the families involved put money together for a reward.")
-            print(f"------------------------------------------------------------------------------------------")
+            print(f"\n\nPlease help us! More than 10 people have "
+            f"vanished already, there must be\na horrible monster hiding in the forest. Are you able to "
+            f"kill it for us? All the families involved put money together for a reward.\n"
+            f"------------------------------------------------------------------------------------------")
             gained_gold = 60
             gained_animal_xp = 4
             gained_dex_xp = 6
 
         elif job_name == "juggling":
-            print(f"\n\nGood morrow on this good morrow! We are in need of a jester, a juggler who jaunts. Please come to our\nperfect party tonight and entertain us. For a good reward of course!")
-            print(f"------------------------------------------------------------------------------------------")
+            print(f"\n\nGood morrow on this good morrow! We are in need of a jester, a juggler who jaunts. "
+            f"Please come to our\nperfect party tonight and entertain us. For a good reward of course!"
+            f"------------------------------------------------------------------------------------------")
             gained_gold = 25
             gained_dex_xp = 4
             gained_entertainment_xp = 5
 
         elif job_name == "singing":
-            print(f"\n\nAre you perhaps\na singer who claps\nalong\nwith a song\nand sings a lovely tune\nin the merry month of june?\n\nWe would like to invite you to sing for us this eve,\n{self.character_title()} {self.name()}, and we would pay you even before you leave.")
-            print(f"------------------------------------------------------------------------------------------")
+            print(f"\n\nAre you perhaps\na singer who claps\nalong\nwith a song\nand sings a lovely tune\n"
+            f"in the merry month of june?\n\nWe would like to invite you to sing for us this eve,\nand we "
+            f"would pay you even before you leave.\n"
+            f"------------------------------------------------------------------------------------------")
             gained_gold = 35
             gained_entertainment_xp = 9
 
-        gain_gold(gained_gold)
-        gain_animal_xp(gained_animal_xp)
-        gain_dex_xp(gained_dex_xp)
-        gain_entertainment_xp(gained_entertainment_xp)
-        print("You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp and {gained_entertainment_xp} by {job_name}. The people you helped are very grateful!")
+        self.goal.gain_gold(gained_gold)
+        character_growth.gain_animal_xp(gained_animal_xp)
+        character_growth.gain_dex_xp(gained_dex_xp)
+        character_growth.gain_entertainment_xp(gained_entertainment_xp)
+        print("gained_gold")
+        print(f"You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp and {gained_entertainment_xp} by {job_name}. The people you helped are very grateful!")
 
 
-    def goal_reached(self, total_quest_days: int, gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int): # get goal values to check against acquired gold and xp
 
-        # check if this method is correct!
-        # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
-
-        if Character.character.get_current_quest_day() <= total_quest_days:
-            quest_day_success = True
-
-        if animal_xp_goal >= animal_xp: # this is not correct, fix it
-            animal_goal_reached = True
-        else:
-            animal_goal_reached = False
-
-        if dex_xp_goal >= dex_xp:
-            dex_goal_reached = True
-        else:
-            dex_goal_reached = False
-
-        if entertainment_xp_goal >= entertainment_xp:
-            entertainment_goal_reached = True
-        else:
-            entertainment_goal_reached = False
-
-        if gold_goal >= gold:
-            gold_goal_reached = True
-
-        if quest_day_success == True and animal_goal_reached == True and dex_goal_reached == True and entertainment_goal_reached == True and gold_goal_reached == True:
-            Goal.game_won(character, Goal.goal) # why does this have wriggly lines?
-
-        else:
-            pass
-            #game_lost()
-                
-"""     def game_won(character: Character, goal: Goal): # I coded this very fast, check that it works!
-        print(f"Congratulations, you achieved your goal: {goal.goal_name}.\n\nYou won on day {character.get_quest_day} of {goal.get_total_quest_days}. You collected:\n- {character.get_gold} of {goal.get_gold} gold\n- {character.get_animal_xp} of {goal.get_animal_xp} gold\n- {character.get_dex_xp} of {goal.get_dex_xp} gold\n- {character.get_entertainment_xp} of {goal.get_entertainment_xp} gold.")
-
-
-    def game_lost(character: Character, goal: Goal): # I coded this very fast, check that it works!
-        print(f"Unfortunately you didn't manage to achieve your goal: buy horse") # continue coding this
-
-        print(f"It is now the last day of your quest, day {goal.get_total_quest_days}. Unfortunately you haven't managed to achieve your goal: {goal.goal_name}.\n\nYou collected:\n- {character.get_gold} of {goal.get_gold} gold\n- {character.get_animal_xp} of {goal.get_animal_xp} gold\n- {character.get_dex_xp} of {goal.get_dex_xp} gold\n- {character.get_entertainment_xp} of {goal.get_entertainment_xp} gold.")
-"""
 
     ##########################################################################
     #                           TO DO IN THIS FILE                           #
