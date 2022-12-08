@@ -9,13 +9,22 @@ from introduction import (
 # create a goal for the game. Each game has subgoals consisting of the amount of gold and xp you need to collect
 class Goal:
     
-    def __init__(self, goal_name: str, total_quest_days: int, gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int):
+    def __init__(self, 
+    goal_name: str, 
+    total_quest_days: int, 
+    gold_goal: int, 
+    animal_xp_goal: int, 
+    dex_xp_goal: int, 
+    entertainment_xp_goal: int, 
+    job_name: str
+    ):
         self.goal_name = goal_name
         self.total_quest_days = total_quest_days
         self.gold_goal = gold_goal
         self.animal_xp_goal = animal_xp_goal
         self.dex_xp_goal = dex_xp_goal
         self.entertainment_xp_goal = entertainment_xp_goal
+        self.job_name = job_name
 
     # print the goal that is chosen
     def __str__(self):
@@ -26,41 +35,105 @@ class Goal:
         f"dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n\n"
         f"------------------------------------------------------------------------------------------\n")
 
+    # get and set the goal name
     def get_goal_name(self):
         return self.goal_name
 
     def set_goal_name(self, goal_name):
         self.goal_name = goal_name
 
+    # get and set the quest days
     def get_total_quest_days(self):
         return self.total_quest_days
     
     def set_total_quest_days(self, total_quest_days):
         self.total_quest_days = total_quest_days
 
+    def set_gold(self, gold):
+        self.gold = gold
+
+    # get and set the gold goal
+    def get_gold_goal(self):
+        return self.gold_goal        
+
+    def set_gold_goal(self, gold_goal):
+        self.gold_goal = gold_goal
+
+    # get and set the amount of gained gold
+    def get_gained_gold(self):
+        return self.gained_gold
+
+    def set_gained_gold(self, gained_gold):
+        self.gained_gold = gained_gold
+
+    # get and set the animal xp your character has   
+    def get_animal_xp(self):
+        return self.animal_xp
+
+    def set_animal_xp(self, animal_xp):
+        self.animal_xp = animal_xp    
+
+    # get and set the animal xp goal
     def get_animal_xp_goal(self):
         return self.get_animal_xp_goal
 
     def set_animal_xp_goal(self, animal_xp_goal):
         self.animal_xp_goal = animal_xp_goal
+
+    # get and set the amount of gained animal xp
+    def get_gained_animal_xp(self):
+        return self.gained_animal_xp
+
+    def set_gained_animal_xp(self, gained_animal_xp):
+        self.gained_animal_xp = gained_animal_xp    
     
+    # get and set the dex xp your character has    
+    def get_dex_xp(self):
+        return self.dex_xp
+
+    def set_dex_xp(self, dex_xp):
+        self.dex_xp = dex_xp 
+
+    # get and set the dex xp goal
     def get_dex_xp_goal(self):
         return self.dex_xp_goal        
     
     def set_dex_xp_goal(self, dex_xp_goal):
         self.dex_xp_goal = dex_xp_goal        
 
+    # get and set the amount of gained dex xp
+    def get_gained_dex_xp(self):
+        return self.gained_dex_xp
+
+    def set_gained_dex_xp(self, gained_dex_xp):
+        self.gained_dex_xp = gained_dex_xp 
+
+    # get and set the entertainment xp your character has
+    def get_entertainment_xp(self):
+        return self.entertainment_xp
+
+    def set_entertainment_xp(self, entertainment_xp):
+        self.entertainment_xp = entertainment_xp     
+
+    # get and set the entertainment xp goal
     def get_entertainment_xp_goal(self):
         return self.entertainment_xp_goal        
 
     def set_entertainment_xp_goal(self, entertainment_xp_goal):
         self.entertainment_xp_goal = entertainment_xp_goal
 
-    def get_gold_goal(self):
-        return self.gold_goal        
+    # get and set the amount of gained entertainment xp
+    def get_gained_entertainment_xp(self):
+        return self.gained_entertainment_xp
 
-    def set_gold_goal(self, gold_goal):
-        self.gold_goal = gold_goal
+    def set_gained_entertainment_xp(self, gained_entertainment_xp):
+        self.gained_entertainment_xp = gained_entertainment_xp
+    
+    def get_job_name(self):
+        return self.job_name
+
+    def set_job_name(self, job_name: str):
+        self.job_name = job_name
     
     # after asking the user what goal they want to choose for the game, this method sets the related statistics as the goal of the current game
     def set_goal_values(self, goal_name):
@@ -90,7 +163,7 @@ class Goal:
 #                              CHOOSE TOWN                               #
 ##########################################################################
 
-    def choose_travel_destination(self):
+    def choose_travel_destination(self, character):
         
         while True: # add name and character title
             town_name = input(
@@ -109,13 +182,13 @@ class Goal:
             else:
                 break
 
-        self.choose_job(town_name)
+        self.choose_job(character, town_name)
 
 ##########################################################################
 #                               CHOOSE JOB                               #
 ##########################################################################
 
-    def choose_job(self, town_name): # OPTIONAL: add bonus xp depending on city and job!
+    def choose_job(self, character, town_name): # OPTIONAL: add bonus xp depending on city and job!
         while True:
             if town_name == "Novigrad": # Add more explanation abouot the city, add name and character title
                 job_name = input(f"\n\nBe welcome to {town_name} today! Any hard worker is greeted warmly here. "
@@ -199,8 +272,9 @@ class Goal:
                         print("\nPlease pick one of the available options.\n")
                 else:
                     break
-
-        self.do_job(job_name)
+                
+        self.set_job_name(job_name)
+        self.do_job(character, job_name)
 
 
 ##########################################################################
@@ -208,66 +282,72 @@ class Goal:
 ##########################################################################
 
 
-    def do_job(self, job_name):
+    def do_job(self, character, job_name):
         print(f'\nyou entered the do_job function with the job "{job_name}"\n')
         
-        gained_gold = 0
-        gained_animal_xp = 0
-        gained_dex_xp = 0
-        gained_entertainment_xp = 0
-        
-        if job_name == "hunting": # add bonus?
+        if job_name == "hunting":
             print(f"\n\nHello there, hunter! I heard you were in need of a job. We are in dire need of some food,\n"
             f"so could you perhaps hunt us a couple of rabbits, or a nice fat bird? We would reward you handsomely!")
             print(f"------------------------------------------------------------------------------------------")
             enter_button()
-            gained_gold = 50
-            gained_animal_xp = 6
-            gained_dex_xp = 4
+            # self.set_total_quest_days(self.get_total_quest_days(self))
+            self.set_gained_gold(50)
+            self.set_gained_animal_xp(6)
+            self.set_gained_dex_xp(4)
+            self.set_gained_entertainment_xp(0)
         
-        elif job_name == "farming ":
+        elif job_name == "farming":
             print(f"\n\nBe welcome to this humble farm! We could use "
             f"your help with the\nharvest today. Of course it goes without saying that you would not work for free!")
             print(f"------------------------------------------------------------------------------------------")
-            gained_gold = 40
-            gained_animal_xp = 7
+            self.set_gained_gold(50)
+            self.set_gained_animal_xp(7)
+            self.set_gained_dex_xp(0)
+            self.set_gained_entertainment_xp(0)
 
         elif job_name == "building":
             print(f"\n\nWe are looking for someone strong that can help us build a new chicken coop.\nWould you "
             f"be able to do that? We would give you more than just some nice fried eggs for lunch!\n"
             f"------------------------------------------------------------------------------------------")
-            gained_gold = 40
-            gained_dex_xp = 7
+            self.set_gained_gold(40)
+            self.set_gained_animal_xp(0)
+            self.set_gained_dex_xp(7)
+            self.set_gained_entertainment_xp(0)
 
         elif job_name == "killing monsters":
             print(f"\n\nPlease help us! More than 10 people have "
             f"vanished already, there must be\na horrible monster hiding in the forest. Are you able to "
             f"kill it for us? All the families involved put money together for a reward.\n"
             f"------------------------------------------------------------------------------------------")
-            gained_gold = 60
-            gained_animal_xp = 4
-            gained_dex_xp = 6
+            self.set_gained_gold(60)
+            self.set_gained_animal_xp(4)
+            self.set_gained_dex_xp(6)
+            self.set_gained_entertainment_xp(0)
 
         elif job_name == "juggling":
             print(f"\n\nGood morrow on this good morrow! We are in need of a jester, a juggler who jaunts. "
             f"Please come to our\nperfect party tonight and entertain us. For a good reward of course!\n"
             f"------------------------------------------------------------------------------------------")
-            gained_gold = 25
-            gained_dex_xp = 4
-            gained_entertainment_xp = 5
+            self.set_gained_gold(25)
+            self.set_gained_animal_xp(0)
+            self.set_gained_dex_xp(4)
+            self.set_gained_entertainment_xp(5)
 
         elif job_name == "singing":
             print(f"\n\nAre you perhaps\na singer who claps\nalong\nwith a song\nand sings a lovely tune\n"
             f"in the merry month of june?\n\nWe would like to invite you to sing for us this eve,\nand we "
             f"would pay you even before you leave.\n"
             f"------------------------------------------------------------------------------------------")
-            gained_gold = 35
-            gained_entertainment_xp = 9
+            self.set_gained_gold(35)
+            self.set_gained_animal_xp(0)
+            self.set_gained_dex_xp(0)
+            self.set_gained_entertainment_xp(9)
 
-        print(f"You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp "
-        f"and {gained_entertainment_xp} by {job_name}. The people you helped are very grateful!")
+        #self.increase_gold_and_xp()
 
-        return gained_gold, gained_animal_xp, gained_dex_xp, gained_entertainment_xp
+        #print(self.get_gained_gold())
+
+        #return gained_gold, gained_animal_xp, gained_dex_xp, gained_entertainment_xp
 """         self.gain_gold(gained_gold)
         self.gain_animal_xp(gained_animal_xp)
         self.gain_dex_xp(gained_dex_xp)

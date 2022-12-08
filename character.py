@@ -32,18 +32,93 @@ class Character:
 
     def get_current_quest_day(self):
         return self.current_quest_day
+
+    def set_current_quest_day(self, current_quest_day):
+        self.current_quest_day = current_quest_day
     
-    def get_gold(self):
-        return self.gold
-    
+    # get and set the gold your character has
+    #def get_gold(self):
+     #   return self.gold
+
+    #def set_gold(self, gold):
+        #self.gold = gold
+
+    # get and set the gold goal
+    def get_gold_goal(self):
+        return self.gold_goal        
+
+    def set_gold_goal(self, gold_goal):
+        self.gold_goal = gold_goal
+
+    # get and set the amount of gained gold
+    def get_gained_gold(self):
+        return self.gained_gold
+
+    def set_gained_gold(self, gained_gold):
+        self.gained_gold += gained_gold
+
+    # get and set the animal xp your character has   
     def get_animal_xp(self):
         return self.animal_xp
+
+    def set_animal_xp(self, animal_xp):
+        self.animal_xp = animal_xp    
+
+    # get and set the animal xp goal
+    def get_animal_xp_goal(self):
+        return self.get_animal_xp_goal
+
+    def set_animal_xp_goal(self, animal_xp_goal):
+        self.animal_xp_goal = animal_xp_goal
+
+    # get and set the amount of gained animal xp
+    def get_gained_animal_xp(self):
+        return self.gained_animal_xp
+
+    def set_gained_animal_xp(self, gained_animal_xp):
+        self.gained_animal_xp = gained_animal_xp    
     
+    # get and set the dex xp your character has    
     def get_dex_xp(self):
         return self.dex_xp
+
+    def set_dex_xp(self, dex_xp):
+        self.dex_xp = dex_xp 
+
+    # get and set the dex xp goal
+    def get_dex_xp_goal(self):
+        return self.dex_xp_goal        
     
+    def set_dex_xp_goal(self, dex_xp_goal):
+        self.dex_xp_goal = dex_xp_goal        
+
+    # get and set the amount of gained dex xp
+    def get_gained_dex_xp(self):
+        return self.gained_dex_xp
+
+    def set_gained_dex_xp(self, gained_dex_xp):
+        self.gained_dex_xp = gained_dex_xp 
+
+    # get and set the entertainment xp your character has
     def get_entertainment_xp(self):
         return self.entertainment_xp
+
+    def set_entertainment_xp(self, entertainment_xp):
+        self.entertainment_xp = entertainment_xp     
+
+    # get and set the entertainment xp goal
+    def get_entertainment_xp_goal(self):
+        return self.entertainment_xp_goal        
+
+    def set_entertainment_xp_goal(self, entertainment_xp_goal):
+        self.entertainment_xp_goal = entertainment_xp_goal
+
+    # get and set the amount of gained entertainment xp
+    def get_gained_entertainment_xp(self):
+        return self.gained_entertainment_xp
+
+    def set_gained_entertainment_xp(self, gained_entertainment_xp):
+        self.gained_entertainment_xp = gained_entertainment_xp   
 
 ##########################################################################
 #                              GOAL SETTING                              #
@@ -66,23 +141,20 @@ class Character:
             else:
                 break
 
+        # create a goal "goal"
         goal = Goal(goal_name, Goal.get_total_quest_days, Goal.get_animal_xp_goal, Goal.get_dex_xp_goal, Goal.get_entertainment_xp_goal, Goal.get_gold_goal)
 
-        # create a goal "goal"
         goal.set_goal_values(goal_name)
 
         print(goal)
 
         return goal
 
-    def increase_gold_xp(): # make this work
-        Character.get_gold()
-
     def goal_reached(self, total_quest_days: int, gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int): # get goal values to check against acquired gold and xp
 
         # check if this method is correct!
         # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
-        if Character.character.get_current_quest_day() <= total_quest_days:
+        if self.goal.get_current_quest_day(self) <= total_quest_days:
             quest_day_success = True
 
         if animal_xp_goal >= animal_xp: # this is not correct, fix it
@@ -108,6 +180,17 @@ class Character:
 
         else:
             pass
+
+
+    
+    def increase_gold_and_xp(self):
+        gained_gold = self.goal.get_gained_gold()
+        self.set_gained_gold(gained_gold)
+
+        print(f"You gained {gained_gold} gold, {self.goal.get_gained_animal_xp()} "
+        f"animal xp, {self.get_gained_dex_xp()} dexterity xp and {self.get_gained_entertainment_xp()} "
+        f"entertainment xp by {self.goal.get_job_name()}. The people you helped are very grateful!")
+
             #game_lost()
                 
 """     def game_won(character: Character, goal: Goal): # I coded this very fast, check that it works!

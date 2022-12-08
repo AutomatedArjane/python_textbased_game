@@ -51,7 +51,8 @@ def create_character():
     dex_xp = 0
     entertainment_xp = 0
 
-    print(f"\nIt is a pleasure to meet you, {character_title} {name}! Please press enter to continue.\n\n------------------------------------------------------------------------------------------")
+    print(f"\nIt is a pleasure to meet you, {character_title} {name}! Please press enter to continue.\n\n"
+    f"------------------------------------------------------------------------------------------")
     
     enter_button()
 
