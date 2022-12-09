@@ -8,7 +8,11 @@ from introduction import (
     game_intro
 )
 
-import goal
+from character import (
+    goal_reached
+)
+
+#import goal
 
 game_intro()
 
@@ -23,11 +27,12 @@ for x in range(character.goal.get_total_quest_days()):
     print_greeting(character)
     character.goal.choose_travel_destination(character)
     enter_button()
-    #print(goal.Goal.__str__)
+    print(goal)
     enter_button()
 
     #character.increase_gold_and_xp()
-#game_won(character, goal)
+
+goal_reached()
 
 
 ##########################################################################
