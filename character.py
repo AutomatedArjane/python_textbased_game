@@ -168,41 +168,6 @@ class Character:
         f"xp by {self.goal.get_job_name()}. The people you helped are very grateful!")
 
     # check after the last quest day if the character has achieved the goal
-    def goal_reached(self): # gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int >>> get goal values to check against acquired gold and xp
-
-        # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
-        if self.get_gold_goal() >= self.get_gold():
-            gold_goal_reached = True
-        else:
-            gold_goal_reached = False
-
-        if self.get_animal_xp_goal() >= self.get_animal_xp(): # this is not correct, fix it
-            animal_goal_reached = True
-        else:
-            animal_goal_reached = False
-
-        if self.get_dex_xp_goal() >= self.get_dex_xp():
-            dex_goal_reached = True
-        else:
-            dex_goal_reached = False
-
-        if self.get_entertainment_xp_goal() >= self.get_entertainment_xp():
-            entertainment_goal_reached = True
-        else:
-            entertainment_goal_reached = False
-
-        if  gold_goal_reached == True and animal_goal_reached == True and dex_goal_reached == True and entertainment_goal_reached == True:
-            print(f'Congratulations, you achieved your goal: "{self.goal.goal_name}"\n\n')
-
-        else:
-            print(f'I am sorry, you did not manage to achieve your goal: "{self.goal.goal_name}." '
-            f'Feel free to try again any time! You are always welcome again.\n\n')
-        
-        (f'You gained:\n- {self.get_gold_goal()} of {self.get_gold()} gold\n'
-        f'- {self.get_animal_xp_goal()} of {self.get_animal_xp()} animal xp\n'
-        f'- {self.get_dex_xp_goal()} of {self.get_dex_xp()} dexterity xp\n'
-        f'- {self.get_entertainment_xp_goal()} of {self.get_entertainment_xp()} animal xp\n\n'
-        f'Thank you for playing! Come back soon to play again in the wonderful world of Woianzii')
             
 """     def game_won(character: Character, goal: Goal): # I coded this very fast, check that it works!
         print(f"Congratulations, you achieved your goal: {goal.goal_name}.\n\nYou won on day {character.get_quest_day} of {goal.get_total_quest_days}. You collected:\n- {character.get_gold} of {goal.get_gold} gold\n- {character.get_animal_xp} of {goal.get_animal_xp} gold\n- {character.get_dex_xp} of {goal.get_dex_xp} gold\n- {character.get_entertainment_xp} of {goal.get_entertainment_xp} gold.")

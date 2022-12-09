@@ -71,7 +71,7 @@ class Goal:
 
     # get and set the animal xp goal
     def get_animal_xp_goal(self):
-        return self.get_animal_xp_goal
+        return self.animal_xp_goal
 
     def set_animal_xp_goal(self, animal_xp_goal):
         self.animal_xp_goal = animal_xp_goal
@@ -275,7 +275,7 @@ class Goal:
         if job_name == "hunting":
             print(f"\n\n------------------------------------------------------------------------------------------\n"
             f"Hello there, hunter {character.name}! I heard you were in need of a job. We are in dire need of some food,\n"
-            f"so could you perhaps hunt us a couple of rabbits, or a nice fat bird? We would reward you handsomely!"
+            f"so could you perhaps hunt us a couple of rabbits, or a nice fat bird? We would reward you handsomely!\n"
             f"------------------------------------------------------------------------------------------")
             enter_button()
             print("(Press enter to do the work)")
@@ -289,16 +289,23 @@ class Goal:
 
             print(f"Previous gold: {character.gold}")
             character.set_gained_gold(50)
-            print(f"Gold after {job_name}: {character.gold}\n")
+            print(f"Gold after {job_name}: {character.gold}")
+            print(f"You need {self.get_gold_goal()} gold to succeed.\n")
+            enter_button()
             print(f"Previous animal xp: {character.animal_xp}")
             character.set_gained_animal_xp(6)
-            print(f"Animal xp after {job_name}: {character.animal_xp}\n")
+            print(f"Animal xp after {job_name}: {character.animal_xp}")
+            print(f"You need {self.get_animal_xp_goal()} animal xp to succeed.\n")
+            enter_button()
             print(f"Previous dexterity xp: {character.dex_xp}")
             character.set_gained_dex_xp(4)
-            print(f"Dexterity xp after {job_name}: {character.dex_xp}\n")
+            print(f"Dexterity xp after {job_name}: {character.dex_xp}")
+            print(f"You need {self.get_dex_xp_goal()} dexterity xp to succeed.\n")
+            enter_button()
             print(f"Previous entertainment xp: {character.entertainment_xp}")
             character.set_gained_entertainment_xp(0)
             print(f"Entertainment xp after {job_name}: {character.entertainment_xp}")
+            print(f"You need {self.get_entertainment_xp_goal()} entertainment xp to succeed.")
 
             enter_button()
             
@@ -311,8 +318,8 @@ class Goal:
         elif job_name == "farming":
             print(f"\n\n------------------------------------------------------------------------------------------\n"
             f"Be welcome to this humble farm, {character.character_title} {character.name}! We could use "
-            f"your help with the\nharvest today. Of course it goes without saying that you would not work for free!")
-            print(f"------------------------------------------------------------------------------------------")
+            f"your help with the\nharvest today. Of course it goes without saying that you would not work for free!\n"
+            f"------------------------------------------------------------------------------------------")
             enter_button()
             print("(Press enter to do the work)")
             enter_button()
@@ -374,9 +381,9 @@ class Goal:
 
         elif job_name == "killing monsters":
             print(f"\n\n------------------------------------------------------------------------------------------\n"
-            f"lease help us, {character.character_title} {character.name}! More than 10 people have "
+            f"Please help us, {character.character_title} {character.name}! More than 10 people have "
             f"vanished already, there must be\na horrible monster hiding in the forest. Are you able to "
-            f"kill it for us? All the families involved put money together for a reward.\n"
+            f"kill it for us? All the families\ninvolved put money together for a reward.\n"
             f"------------------------------------------------------------------------------------------")
             enter_button()
             print("(Press enter to do the work)")
@@ -470,6 +477,41 @@ class Goal:
             f"It is now day {character.current_quest_day} of your quest.\n"
             f"------------------------------------------------------------------------------------------")
             
+    def goal_reached(self): # gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int >>> get goal values to check against acquired gold and xp
+        
+        # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
+        if self.get_gold_goal() >= self.get_gold():
+            gold_goal_reached = True
+        else:
+            gold_goal_reached = False
+
+        if self.get_animal_xp_goal() >= self.get_animal_xp(): # this is not correct, fix it
+            animal_goal_reached = True
+        else:
+            animal_goal_reached = False
+
+        if self.get_dex_xp_goal() >= self.get_dex_xp():
+            dex_goal_reached = True
+        else:
+            dex_goal_reached = False
+
+        if self.get_entertainment_xp_goal() >= self.get_entertainment_xp():
+            entertainment_goal_reached = True
+        else:
+            entertainment_goal_reached = False
+
+        if  gold_goal_reached == True and animal_goal_reached == True and dex_goal_reached == True and entertainment_goal_reached == True:
+            print(f'Congratulations, you achieved your goal: "{self.goal.goal_name}"\n\n')
+
+        else:
+            print(f'I am sorry, you did not manage to achieve your goal: "{self.goal.goal_name}." '
+            f'Feel free to try again any time! You are always welcome again.\n\n')
+        
+        (f'You gained:\n- {self.get_gold()} of {self.get_gold_goal()} gold\n'
+        f'- {self.get_animal_xp()} of {self.get_animal_xp_goal()} animal xp\n'
+        f'- {self.get_dex_xp()} of {self.get_dex_xp_goal()} dexterity xp\n'
+        f'- {self.get_entertainment_xp()} of {self.get_entertainment_xp_goal()} animal xp\n\n'
+        f'Thank you for playing! Come back soon to play again in the wonderful world of Woianzii')
 
         #self.increase_gold_and_xp()
 
