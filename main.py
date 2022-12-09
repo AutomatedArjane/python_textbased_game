@@ -22,8 +22,16 @@ def print_greeting(character):
 # create a character using the class "Character"
 def create_character():
 
-    name = input("What is your name? ") # ask the user for the name of their character
-    
+    while True:
+        name = input("What is your name? ") # ask the user for the name of their character
+        if name == "":
+            print("Please write your name.")
+        elif name == "quit":
+            print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
+            exit()
+        else:
+            break
+
     while True: # ask the user for the character's gender, only specific replies are allowed
         gender = input("\nHow do you wish to be known? Choose male/female/other: ")
         if gender not in ("male", "female", "other"):
