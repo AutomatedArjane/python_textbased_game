@@ -180,7 +180,7 @@ class Character:
 
 
     
-"""     def increase_gold_and_xp(self):
+    def increase_gold_and_xp(self):
         gained_gold = self.get_gained_gold()
         self.set_gained_gold(gained_gold)
 
@@ -195,7 +195,7 @@ class Character:
 
         print(f"You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp and {gained_entertainment_xp} entertainment "
         f"xp by {self.goal.get_job_name()}. The people you helped are very grateful!")
- """
+
             #game_lost()
                 
 """     def game_won(character: Character, goal: Goal): # I coded this very fast, check that it works!

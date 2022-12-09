@@ -178,7 +178,7 @@ class Goal:
     def choose_job(self, character, town_name): # OPTIONAL: add bonus xp depending on city and job!
         while True:
             if town_name == "Novigrad": # Add more explanation abouot the city, add name and character title
-                job_name = input(f"\n\nBe welcome to {town_name} today! Any hard worker is greeted warmly here. "
+                job_name = input(f"\n\nBe welcome to {town_name}, {character.character_title} {character.name}! Any hard worker is greeted warmly here. "
                 f"What kind of job would you be interested in today?\nYou can choose between farming, killing monsters, "
                 f"juggling and singing: ")
                 
@@ -212,7 +212,7 @@ class Goal:
             elif town_name == "Vengerberg":
                 job_name = input(f"\n\nIn {town_name} you can find mysterious witches and formidable sorcerers. "
                 f"Today we need someone more mundane,\nthough we might have monsters roaming around! Are you "
-                f"perhaps in need of a job?\nWe have hunting, building, killing monsters and singing available "
+                f"perhaps in need of a job, {character.character_title} {character.name}?\nWe have hunting, building, killing monsters and singing available "
                 f"for you, which job would you like? ")
 
                 if job_name not in ("hunting", "building", "killing monsters", "singing"):
@@ -229,8 +229,9 @@ class Goal:
             elif town_name == "Brugge":
                 job_name = input(f'\n\n{town_name} is well-known for its beautiful old buildings and it has '
                 f'many temples. In this coastal city\nthey speak an unusual form of Nilfgaardian, called '
-                f'“West-Vlaams”. We could use someone to help us build more temples,\nthough we also have '
-                f'other jobs on offer: farming, building, killing monsters and juggling. Take your pick: ')
+                f'“West-Vlaams”. We could use someone to help us build more temples, {character.character_title} '
+                f'{character.name},\nthough we also have other jobs on offer: farming, building, '
+                f'killing monsters and juggling. Take your pick: ')
 
                 if job_name not in ("farming", "building", "killing monsters", "juggling"):
                     if job_name == "quit":
@@ -247,8 +248,8 @@ class Goal:
                 job_name = input(f"\n\n{town_name} is a Skelliger city, where they mainly speak Rutsi. "
                 f"This hard-to-understand language is\nsomewhat related to Nilfgaardian, though it sounds "
                 f"very different. If you happen to know any Hengfors sea-shanties,\nbe welcome to sing "
-                f"them for us! If you rather do something else, that is also possible.\nYou can choose "
-                f"between hunting, building, killing monsters and singing: ")
+                f"them for us! If you rather do something else, {character.character_title} {character.name}, "
+                f"that is also possible.\nYou can choose between hunting, building, killing monsters and singing: ")
 
                 if job_name not in ("hunting", "building", "killing monsters", "singing"):
                     if job_name == "quit":
@@ -270,92 +271,205 @@ class Goal:
 
 
     def do_job(self, character, job_name):
-        print(f'\nyou entered the do_job function with the job "{job_name}"\n')
         
         if job_name == "hunting":
-            print(f"\n\nHello there, hunter! I heard you were in need of a job. We are in dire need of some food,\n"
-            f"so could you perhaps hunt us a couple of rabbits, or a nice fat bird? We would reward you handsomely!")
-            print(f"------------------------------------------------------------------------------------------")
+            print(f"\n\n------------------------------------------------------------------------------------------\n"
+            f"Hello there, hunter {character.name}! I heard you were in need of a job. We are in dire need of some food,\n"
+            f"so could you perhaps hunt us a couple of rabbits, or a nice fat bird? We would reward you handsomely!"
+            f"------------------------------------------------------------------------------------------")
             enter_button()
-            character.set_current_quest_day(1)
-            print(f"Current gold: {character.gold}")
+            print("(Press enter to do the work)")
+            enter_button()
+            
+            print(f"We are very grateful, {character.character_title} {character.name}, " # make more unique
+            f"for your {job_name} help! Here is your reward:\n")
+
+            # CALL the xp and gold increase function from here, create variables with the numbers below.
+            # Put everything from below in the function
+
+            print(f"Previous gold: {character.gold}")
             character.set_gained_gold(50)
-            print(f"Gold after job: {character.gold}")
-            print(character._dex_xp)
+            print(f"Gold after {job_name}: {character.gold}\n")
+            print(f"Previous animal xp: {character.animal_xp}")
             character.set_gained_animal_xp(6)
-            print(character._dex_xp)
+            print(f"Animal xp after {job_name}: {character.animal_xp}\n")
+            print(f"Previous dexterity xp: {character.dex_xp}")
             character.set_gained_dex_xp(4)
+            print(f"Dexterity xp after {job_name}: {character.dex_xp}\n")
+            print(f"Previous entertainment xp: {character.entertainment_xp}")
             character.set_gained_entertainment_xp(0)
+            print(f"Entertainment xp after {job_name}: {character.entertainment_xp}")
+
+            enter_button()
+            
+            character.set_current_quest_day(1)
+            print(f"------------------------------------------------------------------------------------------\n"
+            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"------------------------------------------------------------------------------------------")
+            
         
         elif job_name == "farming":
-            print(f"\n\nBe welcome to this humble farm! We could use "
+            print(f"\n\n------------------------------------------------------------------------------------------\n"
+            f"Be welcome to this humble farm, {character.character_title} {character.name}! We could use "
             f"your help with the\nharvest today. Of course it goes without saying that you would not work for free!")
             print(f"------------------------------------------------------------------------------------------")
-            character.set_current_quest_day(1)
-            print(f"Current gold: {character.gold}")
+            enter_button()
+            print("(Press enter to do the work)")
+            enter_button()
+            
+            print(f"We are very grateful, {character.character_title} {character.name}, " # make more unique
+            f"for your {job_name} help! Here is your reward:\n")
+
+            print(f"Previous gold: {character.gold}")
             character.set_gained_gold(40)
-            print(f"Gold after job: {character.gold}")
-            print(character.animal_xp)
+            print(f"Gold after {job_name}: {character.gold}\n")
+            print(f"Previous animal xp: {character.animal_xp}")
             character.set_gained_animal_xp(7)
-            print(character.animal_xp)
+            print(f"Animal xp after {job_name}: {character.animal_xp}\n")
+            print(f"Previous dexterity xp: {character.dex_xp}")
             character.set_gained_dex_xp(0)
+            print(f"Dexterity xp after {job_name}: {character.dex_xp}\n")
+            print(f"Previous entertainment xp: {character.entertainment_xp}")
             character.set_gained_entertainment_xp(0)
+            print(f"Entertainment xp after {job_name}: {character.entertainment_xp}")
+            
+            enter_button()
+            
+            character.set_current_quest_day(1)
+            print(f"------------------------------------------------------------------------------------------\n"
+            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"------------------------------------------------------------------------------------------")
 
         elif job_name == "building":
-            print(f"\n\nWe are looking for someone strong that can help us build a new chicken coop.\nWould you "
+            print(f"\n\n------------------------------------------------------------------------------------------\n"
+            f"We are looking for someone strong that can help us build a new chicken coop.\nWould you "
             f"be able to do that? We would give you more than just some nice fried eggs for lunch!\n"
             f"------------------------------------------------------------------------------------------")
-            character.set_current_quest_day(1)
-            print(f"Current gold: {character.gold}")
+            enter_button()
+            print("(Press enter to do the work)")
+            enter_button()
+            
+            print(f"We are very grateful, {character.character_title} {character.name}, " # make more unique
+            f"for your {job_name} help! Here is your reward:\n")
+
+            print(f"Previous gold: {character.gold}")
             character.set_gained_gold(40)
-            print(f"Gold after job: {character.gold}")
+            print(f"Gold after {job_name}: {character.gold}\n")
+            print(f"Previous animal xp: {character.animal_xp}")
             character.set_gained_animal_xp(0)
-            print(character.dex_xp)
+            print(f"Animal xp after {job_name}: {character.animal_xp}\n")
+            print(f"Previous dexterity xp: {character.dex_xp}")
             character.set_gained_dex_xp(7)
-            print(character.dex_xp)
+            print(f"Dexterity xp after {job_name}: {character.dex_xp}\n")
+            print(f"Previous entertainment xp: {character.entertainment_xp}")
             character.set_gained_entertainment_xp(0)
+            print(f"Entertainment xp after {job_name}: {character.entertainment_xp}")
+
+            enter_button()
+            
+            character.set_current_quest_day(1)
+            print(f"------------------------------------------------------------------------------------------\n"
+            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"------------------------------------------------------------------------------------------")
 
         elif job_name == "killing monsters":
-            print(f"\n\nPlease help us! More than 10 people have "
+            print(f"\n\n------------------------------------------------------------------------------------------\n"
+            f"lease help us, {character.character_title} {character.name}! More than 10 people have "
             f"vanished already, there must be\na horrible monster hiding in the forest. Are you able to "
             f"kill it for us? All the families involved put money together for a reward.\n"
             f"------------------------------------------------------------------------------------------")
-            character.set_current_quest_day(1)
-            print(f"Current gold: {character.gold}")
+            enter_button()
+            print("(Press enter to do the work)")
+            enter_button()
+            
+            print(f"We are very grateful, {character.character_title} {character.name}, " # make more unique
+            f"for your {job_name} help! Here is your reward:\n")
+
+            print(f"Previous gold: {character.gold}")
             character.set_gained_gold(60)
-            print(f"Gold after job: {character.gold}")
-            print(character.animal_xp)
+            print(f"Gold after {job_name}: {character.gold}\n")
+            print(f"Previous animal xp: {character.animal_xp}")
             character.set_gained_animal_xp(4)
-            print(character.animal_xp)
+            print(f"Animal xp after {job_name}: {character.animal_xp}\n")
+            print(f"Previous dexterity xp: {character.dex_xp}")
             character.set_gained_dex_xp(6)
+            print(f"Dexterity xp after {job_name}: {character.dex_xp}\n")
+            print(f"Previous entertainment xp: {character.entertainment_xp}")
             character.set_gained_entertainment_xp(0)
+            print(f"Entertainment xp after {job_name}: {character.entertainment_xp}")
+
+            enter_button()
+            
+            character.set_current_quest_day(1)
+            print(f"------------------------------------------------------------------------------------------\n"
+            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"------------------------------------------------------------------------------------------")
 
         elif job_name == "juggling":
-            print(f"\n\nGood morrow on this good morrow! We are in need of a jester, a juggler who jaunts. "
+            print(f"\n\n------------------------------------------------------------------------------------------\n"
+            f"Good morrow on this good morrow! We are in need of a jester, a juggler who jaunts. "
             f"Please come to our\nperfect party tonight and entertain us. For a good reward of course!\n"
             f"------------------------------------------------------------------------------------------")
-            character.set_current_quest_day(1)
-            print(f"Current gold: {character.gold}")
+            enter_button()
+            print("(Press enter to do the work)")
+            enter_button()
+            
+            print(f"We are very grateful, {character.character_title} {character.name}, " # make more unique
+            f"for your {job_name} help! Here is your reward:\n")
+
+            print(f"Previous gold: {character.gold}")
             character.set_gained_gold(25)
-            print(f"Gold after job: {character.gold}")
+            print(f"Gold after {job_name}: {character.gold}\n")
+            print(f"Previous animal xp: {character.animal_xp}")
             character.set_gained_animal_xp(0)
+            print(f"Animal xp after {job_name}: {character.animal_xp}\n")
+            print(f"Previous dexterity xp: {character.dex_xp}")
             character.set_gained_dex_xp(4)
-            print(character.entertainment_xp)
+            print(f"Dexterity xp after {job_name}: {character.dex_xp}\n")
+            print(f"Previous entertainment xp: {character.entertainment_xp}")
             character.set_gained_entertainment_xp(5)
-            print(character.entertainment_xp)
+            print(f"Entertainment xp after {job_name}: {character.entertainment_xp}")
+
+            enter_button()
+            
+            character.set_current_quest_day(1)
+            print(f"------------------------------------------------------------------------------------------\n"
+            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"------------------------------------------------------------------------------------------")
 
         elif job_name == "singing":
-            print(f"\n\nAre you perhaps\na singer who claps\nalong\nwith a song\nand sings a lovely tune\n"
-            f"in the merry month of june?\n\nWe would like to invite you to sing for us this eve,\nand we "
-            f"would pay you even before you leave.\n"
+            print(f"\n\n------------------------------------------------------------------------------------------\n"
+            f"Are you perhaps\na singer who claps\nalong\nwith a song\nand sings a lovely tune\n"
+            f"in the merry month of june?\n\nWe would like to invite you to sing for us this eve,\n"
+            f"{character.character_title} {character.name},\nand we would pay you even before you leave.\n"
             f"------------------------------------------------------------------------------------------")
-            character.set_current_quest_day(1)
-            print(f"Current gold: {character.gold}")
+            enter_button()
+            print("(Press enter to do the work)")
+            enter_button()
+            
+            print(f"We are very grateful, {character.character_title} {character.name}, " # make more unique
+            f"for your {job_name} help! Here is your reward:\n")
+
+            print(f"Previous gold: {character.gold}")
             character.set_gained_gold(35)
-            print(f"Gold after job: {character.gold}")
+            print(f"Gold after {job_name}: {character.gold}\n")
+            print(f"Previous animal xp: {character.animal_xp}")
             character.set_gained_animal_xp(0)
+            print(f"Animal xp after {job_name}: {character.animal_xp}\n")
+            print(f"Previous dexterity xp: {character.dex_xp}")
             character.set_gained_dex_xp(0)
+            print(f"Dexterity xp after {job_name}: {character.dex_xp}\n")
+            print(f"Previous entertainment xp: {character.entertainment_xp}")
             character.set_gained_entertainment_xp(9)
+            print(f"Entertainment xp after {job_name}: {character.entertainment_xp}")
+
+            enter_button()
+            
+            character.set_current_quest_day(1)
+            print(f"------------------------------------------------------------------------------------------\n"
+            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"------------------------------------------------------------------------------------------")
+            
 
         #self.increase_gold_and_xp()
 
