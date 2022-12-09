@@ -2,15 +2,28 @@ from goal import (
     Goal
 )
 
+from intro import (
+    enter_button
+)
+
 ##########################################################################
 #                            CHARACTER CLASS                             #
 ##########################################################################
 
 
-# create a character with a name and character title. It keeps track of the amount of gold and experience you have, and the mission day 
+# create a character with a name and character title. 
+# It keeps track of the amount of gold and experience 
+# you have, and the current day of your quest 
 class Character:
 
-    def __init__ (self, name: str, character_title: str, current_quest_day: int, gold: int, animal_xp: int, dex_xp: int, entertainment_xp: int):
+    def __init__ (self, name: str,
+    character_title: str,
+    current_quest_day: int,
+    gold: int,
+    animal_xp: int,
+    dex_xp: int,
+    entertainment_xp: int):
+
         self.name = name
         self.character_title = character_title
         self.current_quest_day = current_quest_day
@@ -28,99 +41,34 @@ class Character:
         f": {self.entertainment_xp}\n\n----------------------------------------------"
         f"--------------------------------------------\n")
 
+    # enable the program to use the player's chosen name
     def get_name(self):
         return self.name
 
+    # enable the program to use the player's chosen title
     def get_character_title(self):
         return self.character_title
 
+    # these methods keep track of the day of the quest
     def get_current_quest_day(self):
         return self.current_quest_day
 
     def set_current_quest_day(self, current_quest_day):
         self.current_quest_day += current_quest_day
-    
-    # get and set the gold your character has
-    def get_gold(self):
-        return self.gold
 
-    #def set_gold(self, gold):
-        #self.gold = gold
-
-    # get and set the gold goal
-    def get_gold_goal(self):
-        return self.gold_goal        
-
-    def set_gold_goal(self, gold_goal):
-        self.gold_goal = gold_goal
-
-    # get and set the amount of gained gold
-    def get_gained_gold(self):
-        return self.gold
-
+    # set the amount of gained gold
     def set_gained_gold(self, gained_gold):
         self.gold += gained_gold
 
-    # get and set the animal xp your character has   
-    def get_animal_xp(self):
-        return self.animal_xp
-
-    def set_animal_xp(self, animal_xp):
-        self.animal_xp = animal_xp    
-
-    # get and set the animal xp goal
-    def get_animal_xp_goal(self):
-        return self.get_animal_xp_goal
-
-    def set_animal_xp_goal(self, animal_xp_goal):
-        self.animal_xp_goal = animal_xp_goal
-
-    # get and set the amount of gained animal xp
-    def get_gained_animal_xp(self):
-        return self.animal_xp
-
+    # set the amount of gained animal xp
     def set_gained_animal_xp(self, gained_animal_xp):
         self.animal_xp += gained_animal_xp    
-    
-    # get and set the dex xp your character has    
-    def get_dex_xp(self):
-        return self.dex_xp
 
-    def set_dex_xp(self, dex_xp):
-        self.dex_xp = dex_xp 
-
-    # get and set the dex xp goal
-    def get_dex_xp_goal(self):
-        return self.dex_xp_goal        
-    
-    def set_dex_xp_goal(self, dex_xp_goal):
-        self.dex_xp_goal = dex_xp_goal        
-
-    # get and set the amount of gained dex xp
-    def get_gained_dex_xp(self):
-        return self.dex_xp
-
+    # set the amount of gained dexterity xp
     def set_gained_dex_xp(self, gained_dex_xp):
         self.dex_xp += gained_dex_xp 
 
-    # get and set the entertainment xp your character has
-    def get_entertainment_xp(self):
-        return self.entertainment_xp
-
-    def set_entertainment_xp(self, entertainment_xp):
-        self.entertainment_xp = entertainment_xp     
-
-    # get and set the entertainment xp goal
-    def get_entertainment_xp_goal(self):
-        return self.entertainment_xp_goal        
-
-    def set_entertainment_xp_goal(self, entertainment_xp_goal):
-        self.entertainment_xp_goal = entertainment_xp_goal
-
-    # get and set the amount of gained entertainment xp
-    def get_gained_entertainment_xp(self):
-        return self.entertainment_xp
-
+    # set the amount of gained entertainment xp
     def set_gained_entertainment_xp(self, gained_entertainment_xp):
         self.entertainment_xp += gained_entertainment_xp   
 
@@ -128,11 +76,16 @@ class Character:
 #                              GOAL SETTING                              #
 ##########################################################################
 
+    # ask the user for their preferred goal: this will get the data 
+    # from the chosen goal and set it as the goal for the current game
     def create_goal(self):
 
-        # ask for the goal name: this will get the data from the chosen goal and set it as the goal for the current game
         while True:
-            goal_name = input('You are able to choose between three goals in this game: "buy horse", "get own house" and "buy lute".\nEach goal takes a certain number of days to achieve, and has a set amount of experience points (xp) and gold you need to collect.\n\nType the name of the goal you wish to choose here: ') # ask the user for their preferred goal
+            goal_name = input('You are able to choose between three goals '
+            f'in this game: "buy horse", "get own house" and "buy lute".\n'
+            f'Each goal takes a certain number of days to achieve, and has '
+            f'a set amount of experience points (xp) and gold you need to collect.'
+            f'\n\nType the name of the goal you wish to choose here: ')
         
             if goal_name not in ("buy horse", "get own house", "buy lute"):
                 if goal_name == "quit":
@@ -145,8 +98,15 @@ class Character:
             else:
                 break
 
-        # create a goal "goal"
-        goal = Goal(goal_name, Goal.get_total_quest_days, Goal.get_gold_goal, Goal.get_animal_xp_goal, Goal.get_dex_xp_goal, Goal.get_entertainment_xp_goal, Goal.get_job_name)
+        # create a Goal instance called "goal"
+        goal = Goal(goal_name,
+        Goal.get_town_name,
+        Goal.get_total_quest_days,
+        Goal.get_gold_goal,
+        Goal.get_animal_xp_goal,
+        Goal.get_dex_xp_goal,
+        Goal.get_entertainment_xp_goal,
+        Goal.get_job_name)
 
         goal.set_goal_values(goal_name)
 
@@ -154,38 +114,23 @@ class Character:
 
         return goal
 
-    # increase the amount of gold and xp the character has. >>>>> UPDATE this according to new idea    
-    def increase_gold_and_xp(self):
-        gained_gold = self.get_gained_gold()
-        self.set_gained_gold(gained_gold)
+    # increase the amount of gold and xp the character has, depending on the job they chose.
+    def increase_gold_and_xp(self, job_name):
+        enter_button()
+        print("(Press enter to do the work)")
+        enter_button()
+        
+        print(f"We are very grateful, {self.character_title} {self.name}, "
+        f"for your {job_name} help! Here is your reward:\n")
 
-        gained_animal_xp = self.get_gained_animal_xp()
-        self.set_gained_animal_xp(gained_animal_xp)
-
-        gained_dex_xp = self.get_gained_dex_xp()
-        self.set_gained_dex_xp(gained_dex_xp)
-
-        gained_entertainment_xp = self.get_gained_entertainment_xp()
-        self.set_gained_entertainment_xp(gained_entertainment_xp)
-
-        print(f"You gained {gained_gold} gold, {gained_animal_xp} animal xp, {gained_dex_xp} dexterity xp and {gained_entertainment_xp} entertainment "
-        f"xp by {self.goal.get_job_name()}. The people you helped are very grateful!")
-
-    # check after the last quest day if the character has achieved the goal
-            
-"""     def game_won(character: Character, goal: Goal): # I coded this very fast, check that it works!
-        print(f"Congratulations, you achieved your goal: {goal.goal_name}.\n\nYou won on day {character.get_quest_day} of {goal.get_total_quest_days}. You collected:\n- {character.get_gold} of {goal.get_gold} gold\n- {character.get_animal_xp} of {goal.get_animal_xp} gold\n- {character.get_dex_xp} of {goal.get_dex_xp} gold\n- {character.get_entertainment_xp} of {goal.get_entertainment_xp} gold.")
-
-
-    def game_lost(character: Character, goal: Goal): # I coded this very fast, check that it works!
-        print(f"Unfortunately you didn't manage to achieve your goal: buy horse") # continue coding this
-
-        print(f"It is now the last day of your quest, day {goal.get_total_quest_days}. Unfortunately you haven't managed to achieve your goal: {goal.goal_name}.\n\nYou collected:\n- {character.get_gold} of {goal.get_gold} gold\n- {character.get_animal_xp} of {goal.get_animal_xp} gold\n- {character.get_dex_xp} of {goal.get_dex_xp} gold\n- {character.get_entertainment_xp} of {goal.get_entertainment_xp} gold.")
-"""
-
-##########################################################################
-#                           TO DO IN THIS FILE                           #
-##########################################################################
-
-# Get the gain_gold() function and its fellows to work
-# 
+        print(f"Gold after {job_name}: {self.gold}\n")
+        print(f"Animal xp after {job_name}: {self.animal_xp}\n")
+        print(f"Dexterity xp after {job_name}: {self.dex_xp}\n")
+        print(f"Entertainment xp after {job_name}: {self.entertainment_xp}")
+        
+        enter_button()
+        
+        self.set_current_quest_day(1)
+        print(f"------------------------------------------------------------------------------------------\n"
+        f"You spent the night in the town. It is now the next day.\n"
+        f"------------------------------------------------------------------------------------------")
