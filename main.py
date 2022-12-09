@@ -1,4 +1,4 @@
-from introduction import (
+from intro import (
     enter_button
 )
 

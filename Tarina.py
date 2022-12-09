@@ -3,7 +3,7 @@ from main import (
     print_greeting
 )
 
-from introduction import (
+from intro import (
     enter_button,
     game_intro
 )
@@ -28,7 +28,7 @@ for x in range(character.goal.get_total_quest_days()):
 
     #character.increase_gold_and_xp()
 
-goal.goal_reached()
+character.goal.game_won_or_lost(character)
 
 
 ##########################################################################

@@ -22,7 +22,11 @@ class Character:
 
     # print the status of the character
     def __str__(self):
-        return f"\nYour character's statistics are:\n\nName: {self.character_title} {self.name}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\n\nAnimal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp: {self.entertainment_xp}\n\n------------------------------------------------------------------------------------------" # of {mission_days} quest days" --> add this later
+        return (f"Your character's statistics are:\n\nName: {self.character_title} "
+        f"{self.name}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\n\n"
+        f"Animal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp"
+        f": {self.entertainment_xp}\n\n----------------------------------------------"
+        f"--------------------------------------------\n")
 
     def get_name(self):
         return self.name
@@ -37,8 +41,8 @@ class Character:
         self.current_quest_day += current_quest_day
     
     # get and set the gold your character has
-    #def get_gold(self):
-     #   return self.gold
+    def get_gold(self):
+        return self.gold
 
     #def set_gold(self, gold):
         #self.gold = gold

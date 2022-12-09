@@ -2,7 +2,6 @@
 #                                GAME INTRO                              #
 ##########################################################################
 
-
 def enter_button(): # the user can make the text appear block by block through pressing the enter button
     while True:
 
@@ -44,7 +43,7 @@ def game_intro():
     enter_button()
 
     print("Once the days are up, you have either achieved your goal,\nor you have not. If you didn't succeed, you can always try again.\n\nGood luck!")
-    print('\nPs. If you want to quit at any time, please type "quit" as a reply to any question.')
+    print('\nPs. If you want to quit at any time, please type "quit" as a reply to any question.\n')
     print("------------------------------------------------------------------------------------------")
 
     enter_button()
@@ -68,3 +67,4 @@ def game_intro():
             break
 
     print("\nExcellent! Welcome to the fantasy world of Woianzii. Now, it is time to create your character. Start by choosing your name:\n")
+

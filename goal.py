@@ -1,4 +1,4 @@
-from introduction import (
+from intro import (
     enter_button
 )
 
@@ -28,11 +28,11 @@ class Goal:
 
     # print the goal that is chosen
     def __str__(self):
-        return (f"\n------------------------------------------------------------------------------------------\n\n"
+        return (f"\n------------------------------------------------------------------------------------------\n"
         f"The goal you chose is: {self.goal_name}. You have {self.total_quest_days} days to achieve this goal,\n"
         f"and in order to do this you will have to collect a sufficient amount of gold, and enough xp of various "
         f"types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal xp\n- {self.dex_xp_goal} "
-        f"dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n\n"
+        f"dexterity xp\n- {self.entertainment_xp_goal} entertainment xp"
         f"------------------------------------------------------------------------------------------\n")
 
     # get and set the goal name
@@ -49,12 +49,15 @@ class Goal:
     def set_total_quest_days(self, total_quest_days):
         self.total_quest_days = total_quest_days
 
+    def get_gold(self):
+        return self.gold
+    
     def set_gold(self, gold):
         self.gold = gold
 
     # get and set the gold goal
     def get_gold_goal(self):
-        return self.gold_goal        
+        return self.gold_goal
 
     def set_gold_goal(self, gold_goal):
         self.gold_goal = gold_goal
@@ -153,7 +156,8 @@ class Goal:
     def choose_travel_destination(self, character):
         
         while True: # add name and character title
-            town_name = input(
+            town_name = "Hengfors"
+            print(
                 f"\nTo which town would you like to travel today? "
                 f"You can choose between Novigrad, Oxenfurt, Vengerberg, Brugge and Hengfors: "
             )
@@ -245,7 +249,8 @@ class Goal:
                     break
 
             elif town_name == "Hengfors":
-                job_name = input(f"\n\n{town_name} is a Skelliger city, where they mainly speak Rutsi. "
+                job_name = "killing monsters"
+                print(f"\n\n{town_name} is a Skelliger city, where they mainly speak Rutsi. "
                 f"This hard-to-understand language is\nsomewhat related to Nilfgaardian, though it sounds "
                 f"very different. If you happen to know any Hengfors sea-shanties,\nbe welcome to sing "
                 f"them for us! If you rather do something else, {character.character_title} {character.name}, "
@@ -311,7 +316,7 @@ class Goal:
             
             character.set_current_quest_day(1)
             print(f"------------------------------------------------------------------------------------------\n"
-            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"You spent the night in the town. It is now the next day.\n"
             f"------------------------------------------------------------------------------------------")
             
         
@@ -344,7 +349,7 @@ class Goal:
             
             character.set_current_quest_day(1)
             print(f"------------------------------------------------------------------------------------------\n"
-            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"You spent the night in the town. It is now the next day.\n"
             f"------------------------------------------------------------------------------------------")
 
         elif job_name == "building":
@@ -376,7 +381,7 @@ class Goal:
             
             character.set_current_quest_day(1)
             print(f"------------------------------------------------------------------------------------------\n"
-            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"You spent the night in the town. It is now the next day.\n"
             f"------------------------------------------------------------------------------------------")
 
         elif job_name == "killing monsters":
@@ -409,7 +414,7 @@ class Goal:
             
             character.set_current_quest_day(1)
             print(f"------------------------------------------------------------------------------------------\n"
-            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"You spent the night in the town. It is now the next day.\n"
             f"------------------------------------------------------------------------------------------")
 
         elif job_name == "juggling":
@@ -441,7 +446,7 @@ class Goal:
             
             character.set_current_quest_day(1)
             print(f"------------------------------------------------------------------------------------------\n"
-            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"You spent the night in the town. It is now the next day.\n"
             f"------------------------------------------------------------------------------------------")
 
         elif job_name == "singing":
@@ -474,77 +479,46 @@ class Goal:
             
             character.set_current_quest_day(1)
             print(f"------------------------------------------------------------------------------------------\n"
-            f"It is now day {character.current_quest_day} of your quest.\n"
+            f"You spent the night in the town. It is now the next day.\n"
             f"------------------------------------------------------------------------------------------")
             
-    def goal_reached(self): # gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int >>> get goal values to check against acquired gold and xp
+    
+    def game_won_or_lost(self, character): #gold_goal: int, animal_xp_goal: int, dex_xp_goal: int, entertainment_xp_goal: int): # >>> get goal values to check against acquired gold and xp
         
         # this method checks if the goal of the current game has been achieved. If yes, it goes to the method "game_won()", otherwise to the method "game_lost()"
-        if self.get_gold_goal() >= self.get_gold():
+        if  character.gold >= self.gold_goal:
             gold_goal_reached = True
         else:
+            print(self.gold_goal)
+            print(character.gold)
             gold_goal_reached = False
+            print(gold_goal_reached)
 
-        if self.get_animal_xp_goal() >= self.get_animal_xp(): # this is not correct, fix it
+        if character.animal_xp >= self.animal_xp_goal:
             animal_goal_reached = True
         else:
             animal_goal_reached = False
 
-        if self.get_dex_xp_goal() >= self.get_dex_xp():
+        if character.dex_xp >= self.dex_xp_goal:
             dex_goal_reached = True
         else:
             dex_goal_reached = False
 
-        if self.get_entertainment_xp_goal() >= self.get_entertainment_xp():
+        if character.entertainment_xp >= self.entertainment_xp_goal:
             entertainment_goal_reached = True
         else:
             entertainment_goal_reached = False
 
         if  gold_goal_reached == True and animal_goal_reached == True and dex_goal_reached == True and entertainment_goal_reached == True:
-            print(f'Congratulations, you achieved your goal: "{self.goal.goal_name}"\n\n')
+            print(f'Good morning, {character.character_title} {character.name}! Congratulations, you achieved your goal: "{character.goal.goal_name}"\n\n')
 
         else:
-            print(f'I am sorry, you did not manage to achieve your goal: "{self.goal.goal_name}." '
+            print(f'Good morning, {character.character_title} {character.name}! I am sorry to say '
+            f'that you did not manage to achieve your goal: "{character.goal.goal_name}." '
             f'Feel free to try again any time! You are always welcome again.\n\n')
         
-        (f'You gained:\n- {self.get_gold()} of {self.get_gold_goal()} gold\n'
-        f'- {self.get_animal_xp()} of {self.get_animal_xp_goal()} animal xp\n'
-        f'- {self.get_dex_xp()} of {self.get_dex_xp_goal()} dexterity xp\n'
-        f'- {self.get_entertainment_xp()} of {self.get_entertainment_xp_goal()} animal xp\n\n'
-        f'Thank you for playing! Come back soon to play again in the wonderful world of Woianzii')
-
-        #self.increase_gold_and_xp()
-
-        #print(self.get_gained_gold())
-
-        #return gained_gold, gained_animal_xp, gained_dex_xp, gained_entertainment_xp
-"""         self.gain_gold(gained_gold)
-        self.gain_animal_xp(gained_animal_xp)
-        self.gain_dex_xp(gained_dex_xp)
-        self.gain_entertainment_xp(gained_entertainment_xp) """
-
-"""         # increase the xp and amount of gold of the character, based on the job they did
-    def gain_gold(self, gained_gold: int):
-        self.gold += gained_gold
-        print(f"You received {self.gained_gold} gold for your work.")
-
-    def gain_animal_xp(self, gained_animal_xp: int):
-        self.animal_xp += gained_animal_xp
-        print(f"You received {self.gained_animal_xp} animal xp for your hard work.")
-
-    def gain_dex_xp(self, gained_dex_xp: int):
-        self.dex_xp += gained_dex_xp
-        print(f"You received {self.gained_dex_xp} dexterity xp for your hard work.")
-
-    def gain_entertainment_xp(self, gained_entertainment_xp: int):
-        self.entertainment_xp += gained_entertainment_xp
-        print(f"You received {self.gained_entertainment_xp} entertainment xp for your hard work.")
-
- """
-    ##########################################################################
-    #                           TO DO IN THIS FILE                           #
-    ##########################################################################
-
-    # Get the goal_reached() function to work
-    # Complete the game_won() and game_lost() functions and make sure they work
-    # 
+        print(f'You gained:\n- {character.gold} of {self.gold_goal} gold\n'
+        f'- {character.animal_xp} of {self.animal_xp_goal} animal xp\n'
+        f'- {character.dex_xp} of {self.dex_xp_goal} dexterity xp\n'
+        f'- {character.entertainment_xp} of {self.entertainment_xp_goal} animal xp\n\n'
+        f'Thank you for playing! Come back soon to play again in the wonderful world of Woianzii\n')
