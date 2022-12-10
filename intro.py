@@ -2,9 +2,9 @@
 #                                GAME INTRO                              #
 ##########################################################################
 
-# this function is meant to pause the game at set intervals. 
-# Text will appear block by block and the game will only continue after the user presses enter
 def enter_button():
+    """this function is meant to pause the game at set intervals. 
+    Text will appear block by block and the game will only continue after the user presses enter """
     while True:
 
         reply = input("")
@@ -19,10 +19,10 @@ def enter_button():
             print('\nOnly the enter button enables you to continue. '
             f'Press enter or type "quit" if you want to quit the game.\n')
 
-# here, the idea of the game is explained, and how to play it
-# the player can type "quit" in reply to any question in 
-# order to quit the game (this works throughout the whole game)
 def game_intro():
+    """ here, the idea of the game is explained, and how to play it
+    the player can type "quit" in reply to any question in 
+    order to quit the game (this works throughout the whole game) """
     
     print("\n------------------------------------------------------------------------------------------")
     print('WELCOME TO THE FANTASY GAME "WOIANZII"\n\n\nThis game was completed by Arjane Kerkhoven on '

@@ -9,6 +9,10 @@ from intro import (
     game_intro
 )
 
+##########################################################################
+#                    PLAY THE GAME FROM THIS FILE                        #
+##########################################################################
+
 # starts the introduction of the game
 game_intro()
 

@@ -1,8 +1,8 @@
+import os.path
+
 ##########################################################################
 #                             GOAL CLASS                                 #
 ##########################################################################
-
-import os.path
 
 class Goal:
     """ create a goal for the game. In each game you can choose a goal which contains a specific amount of gold and xp you need to collect """
