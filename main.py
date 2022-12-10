@@ -1,116 +1,41 @@
+from play import (
+    create_character,
+    print_greeting,
+    get_old_character_if_it_exists
+)
+
 from intro import (
-    enter_button
+    enter_button,
+    game_intro
 )
 
-from character import (
-    Character
-)
+# starts the introduction of the game
+game_intro()
 
-import os
+# check if the player has saved a previous game
+character = get_old_character_if_it_exists()
 
-##########################################################################
-#                           CHARACTER CREATION                           #
-##########################################################################
+if character is None:
+    character = create_character()
 
-# print the greeting of the day
-def print_greeting(character):
-    print(f'Good morning, {character.get_character_title()} {character.get_name()}! It is currently day '
-    f'{character.get_current_quest_day()} of {character.goal.get_total_quest_days()} of your quest '
-    f'"{character.goal.get_goal_name()}"')
+# set the file name for the data of the saved game
+character.goal.set_file(character.file)
+enter_button()
 
+# print the statistics of the character
+print(character)
+print("Good luck!")
 
-FILE_NAME = "saved_game.txt"
+enter_button()
 
-def get_old_character_if_it_exists():
-    character_stats = [""]
-
-    try:
-        path = os.path.expanduser("~")
-        file = FILE_NAME
-        filename2 = path + "/" + file
-
-        if os.path.exists(filename2):
-            file = open(filename2, "r")
-
-        else:
-            return
-
-        for item in file:
-            if len(item) > 0:
-                character_stats.append(item.strip())
-        character_stats.remove("")
-
-        if character_stats:
-            name = character_stats[1]
-            character_title = character_stats[2]
-            current_quest_day = int(character_stats[3])
-            gold = int(character_stats[4])
-            animal_xp = int(character_stats[5])
-            dex_xp = int(character_stats[6])
-            entertainment_xp = int(character_stats[7])
-            file.close()
-            character = Character(name, character_title, current_quest_day, gold, animal_xp, dex_xp, entertainment_xp, FILE_NAME)
-
-            character.goal.set_saved_quest_days(character.goal.get_total_quest_days() - current_quest_day + 1)
-            print("You have downloaded a previously saved character. Have fun continuing your game!")
-
-            return character
-
-        return
-
-    except Exception as e:
-        print(
-            f"Failed to access file '{file}' while downloading saved your character: {e}.\n\n"
-            f"The game has now closed."
-        )
-        exit()
-
-# create a character using the class "Character"
-def create_character():
-    
-    while True:
-        name = input("What is your name? ") # ask the user for the name of their character
-        if name == "":
-            print("Please write your name.")
-        elif name == "quit":
-            print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
-            exit()
-        else:
-            break
-
-    while True: # ask the user for the character's gender, only specific replies are allowed
-        gender = input("\nHow do you wish to be known? Choose male/female/other: ")
-        if gender not in ("male", "female", "other"):
-            if gender == "quit":
-                print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
-                exit()
-            
-            else:
-                print("\nPlease pick one of the available options.\n")
-        else:
-            break
-    if gender == "male":
-        character_title = "Master"
-    
-    elif gender == "female":
-        character_title = "Lady"
-
-    elif gender == "other":
-        character_title = "Honorable"
-
-    # create the statistics of the character     
-    current_quest_day = 1
-    gold = 0
-    animal_xp = 0
-    dex_xp = 0
-    entertainment_xp = 0
-
-    print(f"\nIt is a pleasure to meet you, {character_title} {name}! Please press enter to continue.\n\n"
-    f"------------------------------------------------------------------------------------------")
-    
+# for the number of days that the chosen quest lasts, this loop will be repeated
+for x in range(character.goal.get_total_quest_days() - character.get_current_quest_day() + 1):
+    print_greeting(character)
+    character.goal.choose_travel_destination()
+    character.goal.choose_job(character, character.goal.town_name)
+    character.goal.do_job(character, character.goal.job_name)
+    character.goal.save_game_progress(character, character.file)
     enter_button()
 
-    # create a character "character"
-    character = Character(name, character_title, current_quest_day, gold, animal_xp, dex_xp, entertainment_xp, FILE_NAME)
-
-    return character
+# after all the days of the quest have passed, check if the game is won or lost
+character.goal.game_won_or_lost(character)
