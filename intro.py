@@ -27,7 +27,7 @@ def game_intro():
     print("\n------------------------------------------------------------------------------------------")
     print('WELCOME TO THE FANTASY GAME "WOIANZII"\n\n\nThis game was completed by Arjane Kerkhoven on '
     f'11.12.2022,\nas part of the Ohjelmoinnin Perusteet course at JAMK in Jyväskylä.\n\n(Click '
-    f'in the console and press enter to continue. Type "quit" to exit the game.)\n'
+    f'in the console and press enter to continue. Type "quit" to exit the game.)\n\n'
     f'------------------------------------------------------------------------------------------')
 
     enter_button()
@@ -35,29 +35,29 @@ def game_intro():
     print("You can play this game with your keyboard. The program will\nprompt you with a question, "
     f"and you can type the answer into the console.\nDuring the game, you go on a quest that you can "
     f"choose yourself. In order to fulfill this quest, you have to gain enough gold and\nexperience "
-    f"points (divided over 3 categories). Each quest has different end goals.\n(press enter to continue)\n"
+    f"points (divided over 3 categories). Each quest has different end goals.\n(press enter to continue)\n\n"
     f"------------------------------------------------------------------------------------------")
     
     enter_button()
 
     print("At the beginning of the game, you are asked to provide some information\nabout your "
-    f"character (you can make that up yourself). The game then shows you your character and "
+    f"character (you can make that up yourself). The game then shows\nyou your character and "
     f"the amount of gold and xp they have (zero is default).\nIt also shows you what the "
-    f"current day is. After this, you choose a goal.\n"
+    f"current day is. After this, you choose a goal.\n\n"
     f"------------------------------------------------------------------------------------------")
 
     enter_button()
 
     print("The goal's requirements are shown, and this is where the main part\nof the game starts. "
     f"For each day of your quest, you can choose a city to visit. Each city has various jobs on "
-    f"offer that can gain you gold and xp.\nTry to choose the jobs that bring you closer to your goal.\n"
+    f"offer that can gain you gold and xp.\nTry to choose the jobs that bring you closer to your goal.\n\n"
     f"------------------------------------------------------------------------------------------")
 
     enter_button()
 
     print('Once the days are up, you have either achieved your goal,\nor you have not. If you '
     f'did not succeed, you can always try again.\n\nGood luck!\nPs. If you want to quit at any time, '
-    f'please type "quit" as a reply to any question.\n'
+    f'please type "quit" as a reply to any question.\n\n'
     f'------------------------------------------------------------------------------------------')
 
     enter_button()

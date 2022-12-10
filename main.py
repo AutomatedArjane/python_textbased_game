@@ -29,7 +29,7 @@ def get_old_character_if_it_exists():
         file = FILE_NAME
         filename2 = path + "/" + file
 
-        if os.path.exists(file):
+        if os.path.exists(filename2):
             file = open(filename2, "r")
 
         else:
