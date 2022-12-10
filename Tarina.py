@@ -1,18 +1,24 @@
 from main import (
     create_character,
-    print_greeting
+    print_greeting,
+    get_old_character_if_it_exists
 )
 
 from intro import (
     enter_button,
     game_intro
 )
-
 # starts the introduction of the game
 game_intro()
 
-# create a game character called "character" of the class "Character"
-character = create_character()
+# check if the player has saved a previous game
+character = get_old_character_if_it_exists()
+
+if character is None:
+    character = create_character()
+
+# set the file name for the data of the saved game
+character.goal.set_file(character.file)
 enter_button()
 
 # print the statistics of the character
@@ -22,19 +28,13 @@ print("Good luck!")
 enter_button()
 
 # for the number of days that the chosen quest lasts, this loop will be repeated
-for x in range(character.goal.get_total_quest_days()):
+for x in range(character.goal.get_total_quest_days() - character.get_current_quest_day() + 1):
     print_greeting(character)
     character.goal.choose_travel_destination()
     character.goal.choose_job(character, character.goal.town_name)
     character.goal.do_job(character, character.goal.job_name)
+    character.goal.save_game_progress(character, character.file) # check if it works
     enter_button()
 
+# after all the days of the quest have passed, check if the game is won or lost
 character.goal.game_won_or_lost(character)
-
-
-##########################################################################
-#                           TO DO IN THIS FILE                           #
-##########################################################################
-
-# Write a README file
-# Complete the program by making sure all functions are called and are in the right location

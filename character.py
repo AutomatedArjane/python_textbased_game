@@ -6,6 +6,8 @@ from intro import (
     enter_button
 )
 
+import os.path
+
 ##########################################################################
 #                            CHARACTER CLASS                             #
 ##########################################################################
@@ -16,13 +18,16 @@ from intro import (
 # you have, and the current day of your quest 
 class Character:
 
-    def __init__ (self, name: str,
-    character_title: str,
-    current_quest_day: int,
-    gold: int,
-    animal_xp: int,
-    dex_xp: int,
-    entertainment_xp: int):
+    def __init__ (
+        self, 
+        name: str,
+        character_title: str,
+        current_quest_day: int,
+        gold: int,
+        animal_xp: int,
+        dex_xp: int,
+        entertainment_xp: int,
+        file: str):
 
         self.name = name
         self.character_title = character_title
@@ -32,6 +37,7 @@ class Character:
         self.dex_xp = dex_xp
         self.entertainment_xp = entertainment_xp
         self.goal = self.create_goal()
+        self.file = file
 
     # print the status of the character
     def __str__(self):
@@ -40,6 +46,7 @@ class Character:
         f"Animal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp"
         f": {self.entertainment_xp}\n\n----------------------------------------------"
         f"--------------------------------------------\n")
+
 
     # enable the program to use the player's chosen name
     def get_name(self):
@@ -80,23 +87,51 @@ class Character:
     # from the chosen goal and set it as the goal for the current game
     def create_goal(self):
 
-        while True:
+        goal_name = ""
+        try:
+            path = os.path.expanduser("~")
+            file = "saved_game.txt"
+            filename2 = path + "/" + file
+
+            try:
+                file = open(filename2, "r")
+            
+            except:
+                file = open(filename2, "w")
+
+            file = open(filename2, "r")
+
+            while True:
+                for item in file:
+                    if len(item) > 0:
+                        item = item.strip()
+                        goal_name = item
+                        break
+                break
+
+        except:
+            print(f"Failed to access file '{file}' while creating your goal.\n\n"
+                f"The game has now closed")
+            exit()
+            
+        finally:
+            file.close()
+        
+
+        if goal_name == "":
             goal_name = input('You are able to choose between three goals '
             f'in this game: "buy horse", "get own house" and "buy lute".\n'
             f'Each goal takes a certain number of days to achieve, and has '
             f'a set amount of experience points (xp) and gold you need to collect.'
             f'\n\nType the name of the goal you wish to choose here: ')
-        
-            if goal_name not in ("buy horse", "get own house", "buy lute"):
-                if goal_name == "quit":
-                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
-                    exit()
-                
-                else:
-                    print("\nPlease pick one of the available options.\n")
-                
+    
+        if goal_name not in ("buy horse", "get own house", "buy lute"):
+            if goal_name == "quit":
+                print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
+                exit()
+            
             else:
-                break
+                print("\nPlease pick one of the available options.\n")
 
         # create a Goal instance called "goal"
         goal = Goal(goal_name,
@@ -106,7 +141,9 @@ class Character:
         Goal.get_animal_xp_goal,
         Goal.get_dex_xp_goal,
         Goal.get_entertainment_xp_goal,
-        Goal.get_job_name)
+        Goal.get_job_name,
+        Goal.get_file,
+        Goal.get_saved_game_list)
 
         goal.set_goal_values(goal_name)
 

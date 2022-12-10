@@ -2,6 +2,8 @@
 #                             GOAL CLASS                                 #
 ##########################################################################
 
+import os.path
+
 # create a goal for the game. In each game you can choose a goal which contains a specific amount of gold and xp you need to collect
 class Goal:
     
@@ -13,7 +15,9 @@ class Goal:
     dex_xp_goal: int, 
     entertainment_xp_goal: int, 
     job_name: str,
-    town_name: str
+    town_name: str,
+    file: str,
+    saved_game_list: list
     ):
         self.goal_name = goal_name
         self.total_quest_days = total_quest_days
@@ -23,12 +27,14 @@ class Goal:
         self.entertainment_xp_goal = entertainment_xp_goal
         self.job_name = job_name
         self.town_name = town_name
+        self.file = file
+        self.saved_game_list = saved_game_list
 
     # print the goal that is chosen
     def __str__(self):
         return (f"\n------------------------------------------------------------------------------------------\n"
-        f"The goal you chose is: {self.goal_name}. You have {self.total_quest_days} days to achieve this goal,\n"
-        f"and in order to do this you will have to collect a sufficient amount of gold, and enough xp of various "
+        f"The goal you chose is: {self.goal_name}. In total, you have {self.total_quest_days} days to achieve this goal,\n"
+        f"and in order to do this you will have to collect a sufficient amount of gold,\nand enough xp of various "
         f"types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal xp\n"
         f"- {self.dex_xp_goal} dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n"
         f"------------------------------------------------------------------------------------------\n")
@@ -43,6 +49,9 @@ class Goal:
     
     def set_total_quest_days(self, total_quest_days):
         self.total_quest_days = total_quest_days
+
+    def set_saved_quest_days(self, saved_quest_days):
+        self.set_saved_quest_days = saved_quest_days
 
     # get and set the gold goal
     def get_gold_goal(self):
@@ -97,6 +106,18 @@ class Goal:
    
     def set_town_name(self, town_name: str):
         self.town_name = town_name
+
+    def get_file(self):
+        return self.file
+
+    def set_file(self, file: str):
+        self.file = file
+
+    def get_saved_game_list(self):
+        return self.saved_game_list
+
+    def set_saved_game_list(self, saved_game_list: list):
+        self.saved_game_list = saved_game_list
     
     # after asking the user what goal they want to choose for the game, 
     # this method sets the related statistics as the goal of the current game
@@ -333,7 +354,34 @@ class Goal:
             character.set_gained_entertainment_xp(9)
            
             character.increase_gold_and_xp(job_name)
-            
+
+    # this method saves the current statistics of the character, thus saving the game
+    def save_game_progress(self, character, file):
+        saved_game_list = [
+        character.goal.goal_name,
+        character.name,
+        character.character_title,
+        character.current_quest_day,
+        character.gold,
+        character.animal_xp,
+        character.dex_xp,
+        character.entertainment_xp]
+
+        path = os.path.expanduser("~")
+        filename2 = path + "/" + file
+
+        try:
+            file = open(filename2, "w")
+            for item in saved_game_list:
+                file.write(f"{item}\n")
+        except:
+            print(f"Failed to save your game progress in file '{file}'.\n\n"
+            f"The game has quit automatically, thank you for playing. Come back soon to play again!")
+            exit()
+        finally:
+            file.close()
+
+
     # In this method, the gold and xp acquired by the player are compared to the goal values of their chosen goal.
 
     # The method checks if the goal of the current game has been achieved.
@@ -370,6 +418,22 @@ class Goal:
             f'that you did not manage to achieve your goal: "{character.goal.goal_name}."\n'
             f'Feel free to try again any time! You are always welcome here.\n\n')
         
+        try:
+            path = os.path.expanduser("~")
+            file = "saved_game.txt"
+            filename2 = path + "/" + file
+            file_to_delete = open(filename2, "w")
+
+            file_to_delete.close()
+
+            with open("saved_game.txt", "w") as file:
+                pass
+
+        except:
+            print(f"The file {file_to_delete} could not be opened")
+            exit()
+
+
         print(f'You gained:\n- {character.gold} of {self.gold_goal} gold\n'
         f'- {character.animal_xp} of {self.animal_xp_goal} animal xp\n'
         f'- {character.dex_xp} of {self.dex_xp_goal} dexterity xp\n'
