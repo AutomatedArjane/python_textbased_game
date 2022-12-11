@@ -57,7 +57,7 @@ def game_intro():
 
     print('Once the days are up, you have either achieved your goal,\nor you have not. If you '
     f'did not succeed, you can always try again.\n\nGood luck!\nPs. If you want to quit at any time, '
-    f'please type "quit" as a reply to any question.\n\n'
+    f'please type "quit" as a reply to any question. Your progress will be saved automatically!\n\n'
     f'------------------------------------------------------------------------------------------')
 
     enter_button()
