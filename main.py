@@ -32,8 +32,14 @@ print("Good luck!")
 
 enter_button()
 
-# for the number of days that the chosen quest lasts, this loop will be repeated
-for x in range(character.goal.get_total_quest_days() - character.get_current_quest_day() + 1):
+""" for the number of days that the chosen quest lasts, 
+this loop will be repeated
+"""
+
+for x in range(
+character.goal.get_total_quest_days() - 
+character.get_current_quest_day() + 1
+):
     print_greeting(character)
     character.goal.choose_travel_destination()
     character.goal.choose_job(character, character.goal.town_name)
@@ -41,5 +47,8 @@ for x in range(character.goal.get_total_quest_days() - character.get_current_que
     character.goal.save_game_progress(character, character.file)
     enter_button()
 
-# after all the days of the quest have passed, check if the game is won or lost
+""" after all the days of the quest have passed, 
+check if the game is won or lost
+"""
+
 character.goal.game_won_or_lost(character)

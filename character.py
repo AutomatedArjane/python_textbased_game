@@ -18,6 +18,8 @@ class Character:
     It keeps track of the amount of gold and experience 
     you have, and the current day of your quest 
     """
+
+
     def __init__ (
         self, 
         name: str,
@@ -27,7 +29,8 @@ class Character:
         animal_xp: int,
         dex_xp: int,
         entertainment_xp: int,
-        file: str):
+        file: str
+        ):
 
         self.name = name
         self.character_title = character_title
@@ -39,13 +42,16 @@ class Character:
         self.goal = self.create_goal()
         self.file = file
 
+
     def __str__(self):
         """ print the status of the character """
+        
         return (f"Your character's statistics are:\n\nName: {self.character_title} "
         f"{self.name}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\n\n"
         f"Animal XP: {self.animal_xp}\nDexterity XP: {self.dex_xp}\nEntertainment XP"
         f": {self.entertainment_xp}\n\n----------------------------------------------"
         f"--------------------------------------------\n")
+
 
     def get_name(self):
         return self.name
@@ -71,13 +77,17 @@ class Character:
     def set_gained_entertainment_xp(self, gained_entertainment_xp):
         self.entertainment_xp += gained_entertainment_xp   
 
+
 ##########################################################################
 #                              GOAL SETTING                              #
 ##########################################################################
 
+
     def create_goal(self):
         """ ask the user for their preferred goal: this will get the data 
-        from the chosen goal and set it as the goal for the current game """
+        from the chosen goal and set it as the goal for the current game.
+        The function also checks if there is a goal from a saved game available
+        """
 
         goal_name = ""
         try:
@@ -102,48 +112,65 @@ class Character:
                 break
 
         except:
-            print(f"Failed to access file '{file}' while creating your goal.\n\n"
-                f"The game has now closed")
+            print(
+            f"Failed to access file '{file}' while creating your goal.\n\n"
+            f"The game has now closed"
+            )
+
             exit()
             
         finally:
             file.close()
         
-        while True:
+        # check if the file contains a goal or if it's empty
+        while True: 
             while True:
                 if goal_name == "":
-                    goal_name = input('You are able to choose between three goals '
+                    goal_name = input(
+                    'You are able to choose between three goals '
                     f'in this game:\n"buy horse", "get own house" and "buy lute".\n'
                     f'Each goal takes a certain number of days to achieve, and has \n'
-                    f'a set amount of experience points (XP) and gold you need to collect.\n'
-                    f'\nType the name of the goal you wish to choose here: ')
+                    f'a set amount of experience points (XP) and gold you need to '
+                    f'collect.\n\nType the name of the goal you wish to choose here: '
+                    )
 
                     if goal_name == "":
                         pass
 
                 break
-
+            
+            # you can only choose specific goals
             if goal_name not in ("buy horse", "get own house", "buy lute"):
                 if goal_name == "quit":
-                    print("\nYou have quit the game, thank you for playing. Come back soon to play again!\n")
+                    print(
+                    "\nYou have quit the game, thank you for playing. "
+                    f"Come back soon to play again!\n"
+                    )
+
                     exit()
                 
                 else:
-                    print("\nPlease pick one of the available options.\n")
+                    print(
+                    "\nPlease pick one of the available options.\n"
+                    )
             else:
                 break
         
-        # create a Goal instance called "goal"
-        goal = Goal(goal_name,
-        Goal.get_town_name,
-        Goal.get_total_quest_days,
-        Goal.get_gold_goal,
-        Goal.get_animal_xp_goal,
-        Goal.get_dex_xp_goal,
-        Goal.get_entertainment_xp_goal,
-        Goal.get_job_name,
-        Goal.get_file,
-        Goal.get_saved_game_list)
+        """ create a Goal instance called "goal", using 
+        the values from the user's chosen goal 
+        """
+        goal = Goal(
+            goal_name,
+            Goal.get_town_name,
+            Goal.get_total_quest_days,
+            Goal.get_gold_goal,
+            Goal.get_animal_xp_goal,
+            Goal.get_dex_xp_goal,
+            Goal.get_entertainment_xp_goal,
+            Goal.get_job_name,
+            Goal.get_file,
+            Goal.get_saved_game_list
+            )
 
         goal.set_goal_values(goal_name)
 
@@ -151,23 +178,36 @@ class Character:
 
         return goal
 
+
     def increase_gold_and_xp(self, job_name):
-        """ increase the amount of gold and xp the character has, depending on the job they chose. """
+        """ increase the amount of gold and xp the character has, 
+        depending on the job they chose. 
+        """
         enter_button()
+
         print("(Press enter to do the work)")
+
         enter_button()
         
-        print(f"We are very grateful, {self.character_title} {self.name}, "
-        f"for your {job_name} help! Here is your reward:\n")
+        print(
+        f"We are very grateful, {self.character_title} {self.name}, "
+        f"for your {job_name} help! Here is your reward:\n"
+        )
 
-        print(f"- Gold after {job_name}: {self.gold}")
-        print(f"- Animal XP after {job_name}: {self.animal_xp}")
-        print(f"- Dexterity XP after {job_name}: {self.dex_xp}")
-        print(f"- Entertainment XP after {job_name}: {self.entertainment_xp}")
+        print(
+        f"- Gold after {job_name}: {self.gold}\n"
+        f"- Animal XP after {job_name}: {self.animal_xp}\n"
+        f"- Dexterity XP after {job_name}: {self.dex_xp}\n"
+        f"- Entertainment XP after {job_name}: {self.entertainment_xp}"
+        )
         
         enter_button()
         
         self.set_current_quest_day(1)
-        print(f"------------------------------------------------------------------------------------------\n"
+        print(
+        f"--------------------------------------------"
+        f"----------------------------------------------\n"
         f"You spent the night in the town. It is now the next day.\n"
-        f"------------------------------------------------------------------------------------------")
+        f"------------------------------------------------"
+        f"------------------------------------------"
+        )
