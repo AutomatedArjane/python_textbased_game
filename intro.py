@@ -38,7 +38,7 @@ def game_intro():
     
     print(
     '\n----------------------------------------------------'
-    f'--------------------------------------WELCOME TO THE '
+    f'--------------------------------------\nWELCOME TO THE '
     f'FANTASY GAME "WOIANZII"\n\n\nThis game was completed '
     f'by Arjane Kerkhoven on 11.12.2022,\nas part of the '
     f'Ohjelmoinnin Perusteet course at JAMK in Jyväskylä.\n\n'
@@ -54,7 +54,7 @@ def game_intro():
     "You can play this game with your keyboard. The program "
     f"will\nprompt you with a question, and you can type the "
     f"answer into the console.\nDuring the game, you go on a "
-    f"quest that you can choose yourself. In order to fulfill "
+    f"quest that you can choose yourself.\nIn order to fulfill "
     f"this quest, you have to gain enough gold and\nexperience "
     f"points (divided over 3 categories). Each quest has "
     f"different end goals.\n(press enter to continue)\n\n"
@@ -79,7 +79,7 @@ def game_intro():
     print(
     "The goal's requirements are shown, and this is where the "
     f"main part\nof the game starts. For each day of your quest,"
-    f" you can choose a city to visit. Each city has various jobs on "
+    f" you can choose a city to visit.\nEach city has various jobs on "
     f"offer that can gain you gold and XP.\nTry to choose the "
     f"jobs that bring you closer to your goal.\n\n"
     f"-------------------------------------------------"
@@ -92,7 +92,7 @@ def game_intro():
     'Once the days are up, you have either achieved your goal,'
     f'\nor you have not. If you did not succeed, you can always '
     f'try again.\n\nGood luck!\nPs. If you want to quit at any time, '
-    f'please type "quit" as a reply to any question. Your progress '
+    f'please type "quit" as a reply to any question.\nYour progress '
     f'will be saved automatically!\n\n---------------------------'
     f'---------------------------------------------------------------'
     )

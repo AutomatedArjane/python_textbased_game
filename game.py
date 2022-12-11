@@ -17,7 +17,7 @@ def print_greeting(character):
     """ print the greeting of the day """
 
     print(
-    f'Good morning, {character.get_character_title()} {character.get_name()}!'
+    f'Good morning, {character.get_character_title()} {character.get_name()}! '
     f'It is currently day {character.get_current_quest_day()} of '
     f'{character.goal.get_total_quest_days()} of your quest '
     f'"{character.goal.get_goal_name()}"'

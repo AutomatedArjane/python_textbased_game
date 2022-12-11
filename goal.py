@@ -503,8 +503,9 @@ class Goal:
         if dex_xp_still_needed < 0:
             dex_xp_still_needed = 0
 
-        entertainment_xp_still_needed = character.goal.entertainment_xp_goal 
-        - character.entertainment_xp
+        entertainment_xp_still_needed = (
+            character.goal.entertainment_xp_goal - character.entertainment_xp
+        )
         if entertainment_xp_still_needed < 0:
             entertainment_xp_still_needed = 0
 
