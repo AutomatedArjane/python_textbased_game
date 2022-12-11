@@ -5,7 +5,7 @@ import os.path
 ##########################################################################
 
 class Goal:
-    """ create a goal for the game. In each game you can choose a goal which contains a specific amount of gold and xp you need to collect """
+    """ create a goal for the game. In each game you can choose a goal which contains a specific amount of gold and XP you need to collect """
     
     def __init__(self, 
     goal_name: str, 
@@ -34,9 +34,9 @@ class Goal:
         """ print the goal that is chosen """
         return (f"\n------------------------------------------------------------------------------------------\n"
         f"The goal you chose is: {self.goal_name}. In total, you have {self.total_quest_days} days to achieve this goal,\n"
-        f"and in order to do this you will have to collect a sufficient amount of gold,\nand enough xp of various "
-        f"types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal xp\n"
-        f"- {self.dex_xp_goal} dexterity xp\n- {self.entertainment_xp_goal} entertainment xp\n"
+        f"and in order to do this you will have to collect a sufficient amount of gold,\nand enough XP of various "
+        f"types. This is what you need:\n\n- {self.gold_goal} gold\n- {self.animal_xp_goal} animal XP\n"
+        f"- {self.dex_xp_goal} dexterity XP\n- {self.entertainment_xp_goal} entertainment XP\n"
         f"------------------------------------------------------------------------------------------\n")
 
     def get_goal_name(self):
@@ -261,7 +261,7 @@ class Goal:
 
     def do_job(self, character, job_name):
         """ once the player has chosen a job, this method determines how much 
-        gold and xp the player earned. Each job has a small introduction. """
+        gold and XP the player earned. Each job has a small introduction. """
         
         if job_name == "hunting":
             print(f"\n------------------------------------------------------------------------------------------\n"
@@ -344,7 +344,7 @@ class Goal:
            
             character.increase_gold_and_xp(job_name)
 
-        # calculate remaining needed gold and xp, if < 0, value = 0
+        # calculate remaining needed gold and XP, if < 0, value = 0
         gold_still_needed = character.goal.gold_goal - character.gold
         if gold_still_needed < 0:
             gold_still_needed = 0
@@ -360,8 +360,8 @@ class Goal:
 
 
         print(
-            f"\nYou still need:\n- {gold_still_needed} gold\n- {animal_xp_still_needed} animal xp\n"
-            f"- {dex_xp_still_needed} dex xp\n- {entertainment_xp_still_needed} entertainment xp"
+            f"\nYou still need:\n- {gold_still_needed} gold\n- {animal_xp_still_needed} animal XP\n"
+            f"- {dex_xp_still_needed} dex XP\n- {entertainment_xp_still_needed} entertainment XP"
             )
 
     def save_game_progress(self, character, file):
@@ -392,7 +392,7 @@ class Goal:
 
 
     def game_won_or_lost(self, character):
-        """ In this method, the gold and xp acquired by the player are compared to
+        """ In this method, the gold and XP acquired by the player are compared to
         the goal values of their chosen goal. The method checks if the goal 
         of the current game has been achieved.
         If yes, it will print a "win" message, otherwise a "lost" message.
@@ -441,7 +441,7 @@ class Goal:
 
 
         print(f'You gained:\n- {character.gold} of {self.gold_goal} gold\n'
-        f'- {character.animal_xp} of {self.animal_xp_goal} animal xp\n'
-        f'- {character.dex_xp} of {self.dex_xp_goal} dexterity xp\n'
-        f'- {character.entertainment_xp} of {self.entertainment_xp_goal} entertainment xp\n\n'
+        f'- {character.animal_xp} of {self.animal_xp_goal} animal XP\n'
+        f'- {character.dex_xp} of {self.dex_xp_goal} dexterity XP\n'
+        f'- {character.entertainment_xp} of {self.entertainment_xp_goal} entertainment XP\n\n'
         f'Thank you for playing! Come back soon to play again in the wonderful world of Woianzii\n')

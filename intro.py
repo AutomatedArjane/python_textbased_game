@@ -42,7 +42,7 @@ def game_intro():
 
     print("At the beginning of the game, you are asked to provide some information\nabout your "
     f"character (you can make that up yourself). The game then shows\nyou your character and "
-    f"the amount of gold and xp they have (zero is default).\nIt also shows you what the "
+    f"the amount of gold and XP they have (zero is default).\nIt also shows you what the "
     f"current day is. After this, you choose a goal.\n\n"
     f"------------------------------------------------------------------------------------------")
 
@@ -50,7 +50,7 @@ def game_intro():
 
     print("The goal's requirements are shown, and this is where the main part\nof the game starts. "
     f"For each day of your quest, you can choose a city to visit. Each city has various jobs on "
-    f"offer that can gain you gold and xp.\nTry to choose the jobs that bring you closer to your goal.\n\n"
+    f"offer that can gain you gold and XP.\nTry to choose the jobs that bring you closer to your goal.\n\n"
     f"------------------------------------------------------------------------------------------")
 
     enter_button()

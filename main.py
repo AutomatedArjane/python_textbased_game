@@ -1,4 +1,4 @@
-from play import (
+from game import (
     create_character,
     print_greeting,
     get_old_character_if_it_exists

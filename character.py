@@ -43,7 +43,7 @@ class Character:
         """ print the status of the character """
         return (f"Your character's statistics are:\n\nName: {self.character_title} "
         f"{self.name}\n\nDay: {self.current_quest_day}\nGold: {self.gold}\n\n"
-        f"Animal xp: {self.animal_xp}\nDexterity xp: {self.dex_xp}\nEntertainment xp"
+        f"Animal XP: {self.animal_xp}\nDexterity XP: {self.dex_xp}\nEntertainment XP"
         f": {self.entertainment_xp}\n\n----------------------------------------------"
         f"--------------------------------------------\n")
 
@@ -115,7 +115,7 @@ class Character:
                     goal_name = input('You are able to choose between three goals '
                     f'in this game:\n"buy horse", "get own house" and "buy lute".\n'
                     f'Each goal takes a certain number of days to achieve, and has \n'
-                    f'a set amount of experience points (xp) and gold you need to collect.\n'
+                    f'a set amount of experience points (XP) and gold you need to collect.\n'
                     f'\nType the name of the goal you wish to choose here: ')
 
                     if goal_name == "":
@@ -161,9 +161,9 @@ class Character:
         f"for your {job_name} help! Here is your reward:\n")
 
         print(f"- Gold after {job_name}: {self.gold}")
-        print(f"- Animal xp after {job_name}: {self.animal_xp}")
-        print(f"- Dexterity xp after {job_name}: {self.dex_xp}")
-        print(f"- Entertainment xp after {job_name}: {self.entertainment_xp}")
+        print(f"- Animal XP after {job_name}: {self.animal_xp}")
+        print(f"- Dexterity XP after {job_name}: {self.dex_xp}")
+        print(f"- Entertainment XP after {job_name}: {self.entertainment_xp}")
         
         enter_button()
         
