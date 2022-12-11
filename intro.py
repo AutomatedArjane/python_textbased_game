@@ -131,7 +131,7 @@ def game_intro():
 
     print(
     "\nExcellent! Welcome to the fantasy world of Woianzii. "
-    f"Now, it is time to create your character. Start by "
+    f"Now, it is time to create\nyour character. Start by "
     f"choosing your name.\nIf you have a saved character, "
     f"the game will automatically download it for you.\n"
     )

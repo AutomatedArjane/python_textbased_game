@@ -162,7 +162,7 @@ class Goal:
         while True: 
             town_name = input(
             "\nTo which town would you like to travel today? "
-            f"You can choose between Novigrad, Oxenfurt, "
+            f"You can choose between\nNovigrad, Oxenfurt, "
             f"Vengerberg, Brugge and Hengfors: "
             )
 
